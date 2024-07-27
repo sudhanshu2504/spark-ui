@@ -8,7 +8,7 @@ interface LayoutProps {
   title: string;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, title }) => {
+export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
   return (
     <>
       <head>
@@ -49,4 +49,3 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
   );
 };
 
-export default Layout;
