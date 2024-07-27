@@ -7,9 +7,6 @@ import components from '@/content/components.js';
 export default function Layout({children,}: Readonly<{children: ReactNode;}>){
   return (
     <>
-      <head>
-        <title>{title}</title>
-      </head>
       <div className="flex flex-row">
         <main className='bg-black w-1/5 py-10 h-full sticky top-14 drop-shadow-xl md:flex flex-col justify-start items-center hidden'>
           <div className='flex flex-col gap-4'>
