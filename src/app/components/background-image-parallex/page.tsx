@@ -1,9 +1,8 @@
 'use client';
 import React,{useState} from 'react';
-import NavDemo from '@/app/components/curved-navbar/components/NavDemo';
 import { BsWindow,BsCodeSlash} from "react-icons/bs";
 import ParallexDemo from './ParallexDemo';
-function page() {
+function Page() {
   const [codeView, setCodeView] = useState(false);
   return (
     <div className='text-white'>
@@ -16,7 +15,7 @@ function page() {
           <li>Smooth Scrolling: Ensures fluid and seamless transitions between different sections of the webpage, enhancing the overall user experience.</li>
           <li>Customizable Speed: Allows for easy adjustment of the parallax scrolling speed to match the design and aesthetic requirements of your website.</li>
           <li>Responsive Design: Adapts to various screen sizes and devices, ensuring a consistent visual experience across desktops, tablets, and smartphones.</li>
-          <li>Lightweight and Efficient: Minimal impact on performance, ensuring that the parallax effect enhances the user experience without compromising the website's speed and responsiveness.</li>
+          <li>Lightweight and Efficient: Minimal impact on performance, ensuring that the parallax effect enhances the user experience without compromising the website&apos;s speed and responsiveness.</li>
         </span>
       </div>
       <div className="buttons flex flex-row gap-2 my-6">
@@ -31,4 +30,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

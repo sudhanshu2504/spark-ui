@@ -1,20 +1,20 @@
 'use client';
-import React,{useState} from 'react';
+import React from 'react';
 import { BsWindow,BsCodeSlash} from "react-icons/bs";
 import StickyCursor from './components/mouse-follower';
-function page() {
-  const [codeView, setCodeView] = useState(false);
+function Page() {
+  const [codeView, setCodeView] = React.useState(false);
   return (
     <div className='text-white'>
         <StickyCursor/>
         <h1 className="text-3xl font-primary pb-4">Mouse Follower</h1>
-        <p className='p-2 my-2'>The Mouse Follower Element is a dynamic UI component that enhances user interaction by smoothly tracking and following the user's mouse movements across the screen. Built with React and Framer Motion, this element adds a modern and engaging effect to your website, providing a more interactive and visually appealing experience for users.</p>
+        <p className='p-2 my-2'>The Mouse Follower Element is a dynamic UI component that enhances user interaction by smoothly tracking and following the user&apos;s mouse movements across the screen. Built with React and Framer Motion, this element adds a modern and engaging effect to your website, providing a more interactive and visually appealing experience for users.</p>
         <div className='p-2 my-2'>
           <h1 className='text-lg'>Features :</h1>
           <span>
-            <li>Smooth Tracking: Utilizes Framer Motion's useSpring hook to ensure fluid and natural movement that closely follows the user's cursor, creating a seamless and responsive interaction.</li>
+            <li>Smooth Tracking: Utilizes Framer Motions useSpring hook to ensure fluid and natural movement that closely follows the user&apos;s cursor, creating a seamless and responsive interaction.</li>
             <li>Customizable Appearance: Easily customizable size, color, and shape to fit the design and aesthetic of any website.</li>
-            <li>Non-intrusive: Implemented with pointerEvents: 'none' to ensure it does not interfere with other interactive elements on the page, maintaining the full functionality of underlying content.</li>
+            <li>Non-intrusive: Implemented with pointerEvents: &apos;none&apos; to ensure it does not interfere with other interactive elements on the page, maintaining the full functionality of underlying content.</li>
             <li>Lightweight: Minimal impact on performance, ensuring that it enhances the user experience without slowing down the website.</li>
           </span>
         </div>
@@ -34,4 +34,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

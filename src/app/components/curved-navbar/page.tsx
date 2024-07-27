@@ -1,10 +1,10 @@
 'use client';
-import React,{useState} from 'react';
+import React from 'react';
 import NavDemo from '@/app/components/curved-navbar/components/NavDemo';
 import { BsWindow,BsCodeSlash} from "react-icons/bs";
 
-function page() {
-  const [codeView, setCodeView] = useState(false);
+function Page() {
+  const [codeView, setCodeView] = React.useState(false);
   return (
     <div className='text-white'>
       <h1 className="text-3xl font-primary pb-4">Curved Navigation Menu</h1>
@@ -16,7 +16,7 @@ function page() {
           <li>Smooth Animations : Utilizes Framer Motion to deliver fluid and engaging animations, enhancing the visual appeal and interaction quality.</li>
           <li>Interactive Hover Effects : Dynamic hover effects that highlight menu items and provide visual feedback to users, improving navigation clarity.</li>
           <li>Customizable Styles : Built with TailwindCSS, offering extensive customization options to fit different design needs and themes.</li>
-          <li>User-Friendly : Intuitive navigation structure that makes it easy for users to explore the website's content.</li>
+          <li>User-Friendly : Intuitive navigation structure that makes it easy for users to explore the website&apos;s content.</li>
         </span>
       </div>
       <div className="buttons flex flex-row gap-2 my-6">
@@ -36,4 +36,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
