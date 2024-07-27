@@ -3,12 +3,8 @@ import Link from 'next/link';
 import layout from '@/content/layout.js';
 import components from '@/content/components.js';
 
-interface LayoutProps {
-  children: ReactNode;
-  title: string;
-}
 
-export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
+export default function Layout({children,}: Readonly<{children: ReactNode;}>){
   return (
     <>
       <head>
