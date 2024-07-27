@@ -8,11 +8,7 @@ export const metadata: Metadata = {
   description: "Frontend based React and Tailwind CSS Library that provides you an access to various components and utilities.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
   return (
     <html lang="en" className="bg-black">
       <body>

@@ -3,7 +3,7 @@ import { HoverBorderGradient } from "@/components/ui/gradient-border";
 export default function Home() {
   return (
       <NextUIProvider>
-        <main className="min-h-screen flex flex-col gap-3 justify-center items-center mx-auto container">
+        <main className="min-h-screen flex flex-col gap-3 justify-evenly items-center mx-auto container">
         <HoverBorderGradient
           containerClassName="rounded-full border-gray-600 mx-auto"
           as="button"
@@ -11,14 +11,14 @@ export default function Home() {
         >
           <span>Introducing Spark UI </span>
         </HoverBorderGradient>
-        <div className="font-black lg:text-5xl text-3xl text-center text-white text-wrap max-w-screen-md">
+        <div className="font-black md:text-5xl text-2xl text-center text-white text-wrap max-w-screen-md px-1">
           React and Tailwind based frontend Library that provides you an access to various components and utilities.
         </div>
-        <div className="flex flex-row flex-wrap gap-6 lg:my-10">
-          <a href='/components' className="text-black rounded-lg bg-white px-6 py-3">
+        <div className="flex flex-row flex-wrap justify-center items-center gap-4 lg:my-10 my-2">
+          <a href='/components' className="text-black text-sm md:text-lg rounded-lg bg-white px-4 py-2 md:px-6 md:py-3">
             Browse Components
           </a>
-          <a href='/'className="text-white border border-white rounded-lg px-6 py-3">
+          <a href='/'className="text-white text-sm md:text-lg border border-white rounded-lg px-4 py-2 md:px-6 md:py-3">
             Custom Components
           </a>
         </div>
