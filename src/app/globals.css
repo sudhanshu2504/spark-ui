@@ -20,3 +20,6 @@ body{
 .font-secondary{
     font-family: secondary !important;
 }
+.bg-code{
+    background-color: #0f0f0f;
+}

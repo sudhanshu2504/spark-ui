@@ -18,7 +18,7 @@ export default function Navigation() {
   });
 
   return (<>
-  <div className="sticky top-0 h-16 flex justify-center items-center text-white bg-black">
+  <div className="sticky top-0 h-16 flex justify-center items-center text-white bg-black z-[5]">
     <a href="/" className="w-2/5 font-bold text-lg flex items-center">
       <SiSparkar className="text-2xl mr-2"/> Spark<span className="text-yellow-400 font-black">UI</span>
     </a>
@@ -26,7 +26,7 @@ export default function Navigation() {
       <FaBarsStaggered className="text-xl cursor-pointer" onClick={()=>setIsMenuOpen(true)}/>
     </div>
   </div>
-  {<div ref={ref} className={`${(isMenuOpen)?'translate-y-0 delay-200':"-translate-y-full delay-0"}  duration-500 transition-transform h-screen w-screen bg-gray-900 fixed z-50 top-0`}>
+  {<div ref={ref} className={`${(isMenuOpen)?'translate-y-0 delay-200':"-translate-y-full delay-0"}  duration-500 transition-transform h-screen w-screen bg-code fixed z-50 top-0`}>
     <div className="container mx-auto h-4/5">
       <div className="h-full">
           <div className="w-full flex justify-end">

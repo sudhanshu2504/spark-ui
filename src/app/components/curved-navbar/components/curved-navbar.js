@@ -64,7 +64,7 @@ function Curve() {
   }
   function Footer() {
     return (
-      <div className={`flex w-full text-sm gap-10 justify-between`}>
+      <div className={`flex w-full text-sm justify-between`}>
           <a>Link 1</a>
           <a>Link 2</a>
           <a>Link 3</a>
@@ -88,7 +88,7 @@ export default function CurvedNavbar({isActive, setIsActive}) {
     const [selectedIndicator, setSelectedIndicator] = useState(pathname);
   
     return (
-      <motion.div variants={menuSlide} initial="initial" animate="enter" exit="exit" className={`h-screen w-screen max-w-screen-sm fixed right-0 top-0 text-black bg-[rgb(255,224,69)]`}>
+      <motion.div variants={menuSlide} initial="initial" animate="enter" exit="exit" className={`h-screen w-screen max-w-screen-sm fixed right-0 top-0 text-black bg-[rgb(255,224,69)] z-10`}>
         <div className='w-full flex justify-end text-3xl p-4' onClick={()=>setIsActive(false)}><IoClose className='text-3xl'/></div>
          <div className={`styles.body h-full p-24 flex flex-col justify-between`}>
               <div onMouseLeave={() => {setSelectedIndicator(pathname)}} className={`flex flex-col text-5xl gap-3 mt-20`}>

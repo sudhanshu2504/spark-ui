@@ -23,13 +23,13 @@ function Page() {
           <button className={`${codeView?("bg-slate-700/70 duration-400"):("")} border border-slate-700/70 text-sm px-3 py-2 w-fit cursor-pointer rounded-md flex gap-1 items-center justify-center font-medium`} onClick={()=>setCodeView(true)}><BsCodeSlash/> Code</button>
         </div>
         {(!codeView) ? 
-        (<div className="bg-slate-900 h-[75vh] w-full border border-gray-500 rounded-md border-opacity-10">
+        (<div className="bg-code h-[75vh] w-full border border-gray-500 rounded-md border-opacity-10">
           <div className="w-full h-full flex justify-center items-center">
-            <span className="text-3xl font-bold text-wrap">
+            <span className="text-2xl font-semibold text-wrap px-3">
               Mouse Follower is enabled, interact with the screen to see the effect.
             </span>
           </div>
-        </div>) :(<div className="bg-slate-900 h-[75vh] w-full border border-gray-500 rounded-md border-opacity-10 flex justify-center items-center">Coming Soon... Stay Tuned</div>)}
+        </div>) :(<div className="bg-code h-[75vh] w-full border border-gray-500 rounded-md border-opacity-10 flex justify-center items-center">Coming Soon... Stay Tuned</div>)}
       </div>
   )
 }
