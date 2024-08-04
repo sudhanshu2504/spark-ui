@@ -25,8 +25,8 @@ function Page() {
         {(!codeView) ? 
         (<div className="bg-code h-[75vh] w-full border border-gray-500 rounded-md border-opacity-10">
           <div className="w-full h-full flex justify-center items-center">
-            <span className="text-2xl font-semibold text-wrap px-3">
-              Mouse Follower is enabled, interact with the screen to see the effect.
+            <span className="text-2xl max-w-3xl font-normal text-wrap px-6">
+              Mouse Follower is enabled interact with the mouse to see the effects. Create Exciting Stuffs using the Mouse Follower Components easily.
             </span>
           </div>
         </div>) :(<div className="bg-code h-[75vh] w-full border border-gray-500 rounded-md border-opacity-10 flex justify-center items-center">Coming Soon... Stay Tuned</div>)}
