@@ -36,7 +36,7 @@ const Content = () => {
           <a href='/components' className="text-black text-sm md:text-lg rounded-lg bg-white px-4 py-2 md:px-6 md:py-3">
             Browse Components
           </a>
-          <a href='/'className="text-white text-sm md:text-lg border border-white rounded-lg px-4 py-2 md:px-6 md:py-3">
+          <a href='/pricing'className="text-white text-sm md:text-lg border border-white rounded-lg px-4 py-2 md:px-6 md:py-3">
             Custom Components
           </a>
         </div>

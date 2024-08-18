@@ -19,7 +19,7 @@ export default function Navigation() {
 
   return (<>
   <div className="sticky top-0 h-16 flex justify-center items-center text-white bg-black z-[5]">
-    <a href="/" className="w-2/5 font-bold text-lg flex items-center">
+    <a href="/" className="w-2/5 font-black text-xl flex items-center">
       <SiSparkar className="text-2xl mr-2"/> Spark<span className="text-yellow-400 font-black">UI</span>
     </a>
     <div className="w-2/5 flex justify-end">

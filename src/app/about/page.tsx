@@ -5,7 +5,7 @@ import { ShootingStars } from '@/components/ui/shooting-stars';
 function Page() {
   return (
         <div className="h-auto flex flex-col justify-center items-center">
-        <h1 className='text-center text-3xl md:text-5xl my-10 font-primary text-white'>About SparkUI</h1>
+        <h1 className='text-center text-3xl md:text-5xl my-10 font-black underline underline-offset-4 text-white'>About Spark<span className='text-yellow-400'>UI</span></h1>
         <div className="container mx-auto h-auto flex flex-wrap justify-center items-center my-10 md:my-20 gap-y-10">
             <div className="w-[95%] md:w-1/3 text-lg flex items-center justify-center">
             <Logo/>
