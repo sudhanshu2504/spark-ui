@@ -1,11 +1,10 @@
 'use client';
 import { useEffect, React } from 'react';
 import Lenis from 'lenis';
-
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { useRef } from 'react';
-export default function Home() {
 
+export default function ParallexDemo() {
   useEffect( () => {
     const lenis = new Lenis()
 

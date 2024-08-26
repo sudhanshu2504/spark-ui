@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 import Lenis from 'lenis'
 import Card from './components/cards-stack';
 
-const projects = [
+const sections = [
     {
       title: "Delhi, India",
       description: "The capital city of India, Delhi, is a blend of historic and modern attractions. Visitors can explore ancient monuments like the Red Fort and Humayun's Tomb, or enjoy the vibrant street life in markets like Chandni Chowk. Delhi's diverse culture and rich history make it a fascinating destination.",
@@ -55,11 +55,11 @@ const projects = [
     })
   
     return (
-      <main ref={container} className={`styles.main`}>
+      <main ref={container}>
         {
-          projects.map( (project, i) => {
-            const targetScale = 1 - ( (projects.length - i) * 0.05);
-            return <Card key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale}/>
+          sections.map( (section, i) => {
+            const targetScale = 1 - ( (sections.length - i) * 0.05);
+            return <Card key={`p_${i}`} i={i} {...section} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale}/>
           })
         }
       </main>

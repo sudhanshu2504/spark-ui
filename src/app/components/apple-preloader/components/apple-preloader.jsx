@@ -87,7 +87,6 @@ export default function Preloader() {
             className="flex bg-clip-text bg-gradient-to-br to-[rgb(255,255,255,0.5)] from-[rgb(255,255,255,0.58)] font-medium text-[42px] items-center absolute z-[1]"
             style={{"color":"transparent"}}
           >
-            {/* <span className="block w-[10px] h-[10px] bg-white rounded-full mr-[10px]"></span> */}
             {words[index]}
           </motion.p>
           <svg className="absolute top-0 w-[100%] h-[calc(100% + 200px)]">
