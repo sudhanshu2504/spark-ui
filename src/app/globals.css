@@ -23,3 +23,32 @@ body{
 .bg-code{
     background-color: #0f0f0f;
 }
+/* For Webkit Browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+    height: 8px; /* Height of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #2c2c2c; /* Background of the scrollbar track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #5a5a5a; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Roundness of the scrollbar thumb */
+    border: 2px solid #2c2c2c; /* Optional: Add border to thumb */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #767676; /* Color of the scrollbar thumb on hover */
+  }
+  
+  /* For Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #5a5a5a #2c2c2c;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+  }
+  
