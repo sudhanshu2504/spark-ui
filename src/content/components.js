@@ -35,6 +35,12 @@ const components = [
         img: 'mouse_follower.png',
         description : "A mouse follower that follows the cursor on the screen and add a touch of creativity to your website.",
     },
+    {
+        name: 'Text Gradient Onhover',
+        link: 'text-gradient-onhover',
+        img: 'text_gradient_onhover.png',
+        description : "A text gradient on hover effect that changes the color of the text on hover to add a touch of creativity to your website.",
+    },
     
     {
         name: 'Coming Soon...',
