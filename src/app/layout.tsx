@@ -6,7 +6,10 @@ import Footer from "../components/footer";
 export const metadata: Metadata = {
   title: "SparkUI | Frontend Library",
   description: "Elevate your web projects with SparkUI and create stunning, high-performance websites that stand out in SEO and offer an exceptional user experience",
-  keywords: "React, TypeScript, TailwindCSS, SparkUI, Frontend Library, ShadCN, Nextjs, Framer Motion, SEO, Web Development, Web Design, UI/UX, Components, Templates, Open Source, Free, Interfaces",
+  keywords: "React, TypeScript, TailwindCSS, SparkUI, Frontend Library, Shadcn, Nextjs, Framer Motion, SEO, Web Development, Web Design, UI/UX, Components, Templates, Open Source, Free, Interfaces, Apple, Premium, Development, Library, Services",
+  alternates: {
+    canonical: 'https://www.sparkui.me',
+  },
 
 };
 
