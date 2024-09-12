@@ -10,7 +10,34 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.sparkui.me',
   },
-
+  // Open Graph metadata (for Facebook, LinkedIn, etc.)
+  openGraph: {
+    title: 'SparkUI - Your Ultimate UI Library',
+    description: 'Explore SparkUI, a powerful and customizable UI library with a wide range of components for building modern web applications.',
+    url: 'https://www.sparkui.me',
+    siteName: 'SparkUI',
+    images: [
+      {
+        url: 'https://www.sparkui.me/banner.png',
+        width: 1200,
+        height: 630,
+        alt: 'SparkUI Preview',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  // Twitter metadata
+  twitter: {
+    title: 'SparkUI - Your Ultimate UI Library',
+    description: 'Discover SparkUI, the customizable UI library with reusable components for modern web design.',
+    site: '@knight_s18', 
+    creator: '@knight_s18',
+    images: ['https://www.sparkui.me/banner.png'],
+  },
+  icons: {
+    icon: 'https://sparkui.me/favicon.ico', 
+  },
 };
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
