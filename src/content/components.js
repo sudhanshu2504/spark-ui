@@ -41,13 +41,6 @@ const components = [
         img: 'text_gradient_onhover.png',
         description : "A text gradient on hover effect that changes the color of the text on hover to add a touch of creativity to your website.",
     },
-    
-    {
-        name: 'Coming Soon...',
-        link: '',
-        img: 'coming_soon.png',
-        description : ""
-    }
 ];
 
 export default components;

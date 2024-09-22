@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import {NextUIProvider} from "@nextui-org/react";
 import Navigation from "../components/navbar";
 import Footer from "../components/footer";
 
@@ -44,9 +45,13 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
   return (
     <html lang="en" className="bg-black">
       <body>
-        <Navigation/>
-        {children}
-        <Footer/>
+        <NextUIProvider>
+          <Navigation/>
+          <div className="min-h-screen">
+            {children}
+          </div>
+          <Footer/>
+        </NextUIProvider>
       </body>
     </html>
   );

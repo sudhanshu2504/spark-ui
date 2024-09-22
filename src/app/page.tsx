@@ -1,16 +1,10 @@
 'use client';
 import React from "react";
-import {NextUIProvider} from "@nextui-org/react";
 import { HoverBorderGradient } from "@/components/ui/gradient-border";
 import Logo from "@/components/logo";
 import components from '@/content/components'
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  MotionValue,
-} from "framer-motion";
+import { motion,  useScroll,  useTransform,  useSpring,  MotionValue} from "framer-motion";
+import Marquee from "@/components/ui/marquee";
 
 const Content = () => {
   return(
@@ -140,7 +134,7 @@ const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[300vh] overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[120vh] overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Content />
       <motion.div
@@ -183,10 +177,32 @@ const HeroParallax = ({
     </div>
   );
 };
+const OurComponents = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-100 to-gray-500 text-center mb-6 font-primary">Our Components</h1>
+      <div className="flex flex-row flex-wrap gap-4">
+      <Marquee pauseOnHover className="[--duration:35s] antialiased">
+        {components.map((component) => (
+          <div key={component.name} className="flex flex-col gap-2 h-1/2 w-1/2">
+            <img
+              src={`/assests/components_preview/${component.img}`}
+              alt={component.name}
+              className="h-full w-full object-cover object-center"
+            />
+            <h3 className="text-white">{component.name}</h3>
+          </div>
+        ))}
+      </Marquee>
+      </div>
+    </div>
+  );
+}
 export default function Home() {
   return (
-      <NextUIProvider>
+      <>
         <HeroParallax components={components} />
-      </NextUIProvider>
+        <OurComponents />
+      </>
   );
 }
