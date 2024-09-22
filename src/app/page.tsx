@@ -2,9 +2,11 @@
 import React from "react";
 import { HoverBorderGradient } from "@/components/ui/gradient-border";
 import Logo from "@/components/logo";
+import Link from "next/link";
 import components from '@/content/components'
 import { motion,  useScroll,  useTransform,  useSpring,  MotionValue} from "framer-motion";
 import Marquee from "@/components/ui/marquee";
+import { TbComponents } from "react-icons/tb";
 
 const Content = () => {
   return(
@@ -180,11 +182,11 @@ const HeroParallax = ({
 const OurComponents = () => {
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-100 to-gray-500 text-center mb-6 font-primary">Our Components</h1>
+      <h1 className="md:text-5xl text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-100 to-gray-500 text-center mb-6">Our Components</h1>
       <div className="flex flex-row flex-wrap gap-4">
-      <Marquee pauseOnHover className="[--duration:35s] antialiased">
+      <Marquee pauseOnHover className="[--duration:35s] antialiased h-[500px]">
         {components.map((component) => (
-          <div key={component.name} className="flex flex-col gap-2 h-1/2 w-1/2">
+          <div key={component.name} className="flex flex-col gap-2 h-1/2 w-1/2 border border-gray-500/50 rounded-md ">
             <img
               src={`/assests/components_preview/${component.img}`}
               alt={component.name}
@@ -198,11 +200,123 @@ const OurComponents = () => {
     </div>
   );
 }
+const Features = () => {
+  return (
+    <section className="w-full py-20 md:py-24 lg:py-32">
+    <div className="container mx-auto grid gap-8 px-4 md:px-6 lg:grid-cols-2 lg:gap-16">
+      <div className="space-y-4">
+        <div className="inline-block rounded-lg bg-white px-3 py-1 text-sm text-black">
+          Features
+        </div>
+        <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl uppercase font-primary text-yellow-400">Feel the Spark</h2>
+        <p className="text-gray-200 md:text-xl">
+          SparkUI offers a comprehensive suite of customizable components to elevate your web applications. From
+          sleek UI elements to advanced interactive features, SparkUI has everything you need to create stunning
+          user experiences.
+        </p>
+      </div>
+      <div className="grid gap-6">
+        <div className="grid grid-cols-[auto_1fr] items-center gap-4">
+          <div className="rounded-full p-2 text-white">
+            <TbComponents className="h-6 w-6" />
+          </div>
+          <div>
+            <h3 className="text-xl text-yellow-400 font-bold">Responsive Design</h3>
+            <p className="text-gray-300">
+              Components are designed to adapt seamlessly across all devices, ensuring a consistent and
+              optimized user experience.
+            </p>
+          </div>
+        </div>
+        <div className="grid grid-cols-[auto_1fr] items-center gap-4">
+          <div className="rounded-full p-2 text-white">
+            <TbComponents className="h-6 w-6" />
+          </div>
+          <div>
+            <h3 className="text-xl text-yellow-400 font-bold">Highly Customizable</h3>
+            <p className="text-gray-300">
+              Easily modify the components to match your brand&apos;s unique style and design preferences with ease.
+            </p>
+          </div>
+        </div>
+        <div className="grid grid-cols-[auto_1fr] items-center gap-4">
+          <div className="rounded-full p-2 text-white">
+            <TbComponents className="h-6 w-6" />
+          </div>
+          <div>
+            <h3 className="text-xl text-yellow-400 font-bold">Blazing-Fast Performance</h3>
+            <p className="text-gray-300">
+              Components are optimized for lightning-fast load times and seamless user interactions.
+            </p>
+          </div>
+        </div>
+        <div className="grid grid-cols-[auto_1fr] items-center gap-4">
+          <div className="rounded-full p-2 text-white">
+            <TbComponents className="h-6 w-6" />
+          </div>
+          <div>
+            <h3 className="text-xl text-yellow-400 font-bold">Accessibility-First</h3>
+            <p className="text-gray-300">
+              SparkUI prioritizes accessibility, ensuring your applications are inclusive and user-friendly for all.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  );
+}
+const TryItNow = () => {
+  return(
+    <section className="py-60 md:py-40 bg-yellow-400 px-4 md:px-8 lg:px-12">
+        <div className="max-w-3xl mx-auto text-center space-y-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-black">Unlock the Spark of Premium UI</h2>
+          <p className="text-black/75">
+            Our library of high-quality components is designed to help you build stunning and responsive web
+            applications with ease.
+          </p>
+          <div className="flex justify-center gap-4">
+            <Link
+              href="/components"
+              className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium text-black shadow-sm transition-colors hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-[#1e293b]"
+              prefetch={false}
+            >
+              Try It Now
+            </Link>
+          </div>
+        </div>
+      </section>
+  )
+}
+const Contribute = () => {
+  return(
+    <section className="py-60 md:py-40 px-4 md:px-8 lg:px-12">
+        <div className="max-w-3xl mx-auto text-center space-y-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">Looking forward to contribute as an Developer?</h2>
+          <p className="text-gray-400">
+            Expand your network and contribute to the open-source community by becoming a SparkUI contributor.
+          </p>
+          <div className="flex justify-center gap-4">
+            <Link
+              href="/contribute"
+              className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2 text-base font-medium text-black shadow-sm transition-colors hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-[#1e293b]"
+              prefetch={false}
+            >
+              Contribute Now
+            </Link>
+          </div>
+        </div>
+      </section>
+  )
+}
 export default function Home() {
   return (
       <>
         <HeroParallax components={components} />
         <OurComponents />
+        <Features />
+        <TryItNow />
+        <Contribute />
       </>
   );
 }

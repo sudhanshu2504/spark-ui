@@ -7,7 +7,6 @@ import components from '@/content/components.js';
 
 interface LayoutProps {
   children: ReactNode;
-  title: string;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
@@ -41,7 +40,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
         </div>
         </main>
-        <main className="flex-grow container ml-auto px-4 py-8">
+        <main className="flex w-full md:w-4/5 ml-auto px-4 py-8">
           {children}
         </main>
       </div>

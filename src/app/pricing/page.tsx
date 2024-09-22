@@ -73,7 +73,7 @@ export default function Page() {
                       <span>Priority support</span>
                     </li>
                   </ul>
-                  <button className="bg-white text-black mt-10 rounded-lg w-full py-2 text-center hover:scale-105 transition-all">Proceed</button>
+                  <button className="bg-white text-black mt-10 rounded-lg w-full py-2 text-center hover:scale-105 transition-all" disabled>Coming Soon</button>
                 </div>
             </div>
             <div className="rounded-lg bg-yellow-400 text-black backdrop-blur-2xl p-6 shadow-lg w-full md:w-[49%] lg:w-[24%]">
@@ -104,7 +104,7 @@ export default function Page() {
                     <span>Dedicated support</span>
                   </li>
                 </ul>
-                <button className="bg-white text-black mt-10 rounded-lg w-full py-2 text-center hover:scale-105 transition-all">Proceed</button>
+                <button className="bg-white text-black mt-10 rounded-lg w-full py-2 text-center hover:scale-105 transition-all" disabled>Coming Soon</button>
               </div>
             </div>
             <div className="rounded-lg bg-gray-900/80 backdrop-blur-2xl p-6 shadow-lg w-full md:w-[49%] lg:w-[24%]">
@@ -135,7 +135,7 @@ export default function Page() {
                     <span>Dedicated support</span>
                   </li>
                 </ul>
-                <button className="bg-white text-black mt-10 rounded-lg w-full py-2 text-center hover:scale-105 transition-all">Proceed</button>
+                <button className="bg-white text-black mt-10 rounded-lg w-full py-2 text-center hover:scale-105 transition-all" disabled>Coming Soon</button>
               </div>
             </div>
         </div>
