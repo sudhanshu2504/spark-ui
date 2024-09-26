@@ -184,7 +184,7 @@ const OurComponents = () => {
     <div className="flex flex-col gap-4">
       <h1 className="md:text-5xl text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-100 to-gray-500 text-center mb-6">Our Components</h1>
       <div className="flex flex-row flex-wrap gap-4">
-      <Marquee pauseOnHover className="[--duration:35s] antialiased h-[500px]">
+      <Marquee className="[--duration:35s] antialiased h-[500px]">
         {components.map((component) => (
           <div key={component.name} className="flex flex-col gap-2 h-1/2 w-1/2 border border-gray-500/50 rounded-md ">
             <img
