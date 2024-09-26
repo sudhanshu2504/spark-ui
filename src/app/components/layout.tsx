@@ -34,7 +34,7 @@ export default function Layout({children,}: Readonly<{children: ReactNode;}>){
             </div>
           </div>
         </main>
-        <main className="flex-grow container ml-auto px-4 py-8">
+        <main className="flex md:w-4/5 w-full container ml-auto px-4 py-8">
           {children}
         </main>
       </div>

@@ -45,14 +45,20 @@ const sections = [
       offset: ['start start', 'end end']
     })
   
-    useEffect( () => {
+    useEffect(() => {
       const lenis = new Lenis()
       function raf(time) {
         lenis.raf(time)
         requestAnimationFrame(raf)
       }
       requestAnimationFrame(raf)
-    })
+      
+      return () => {
+        if (lenis) {
+          lenis.destroy(); // Clean up Lenis instance
+        }
+      };
+    },[]);
   
     return (
       <main ref={container}>

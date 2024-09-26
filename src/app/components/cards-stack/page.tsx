@@ -54,14 +54,20 @@ const sections = [
       offset: ['start start', 'end end']
     })
   
-    useEffect( () => {
+    useEffect(() => {
       const lenis = new Lenis()
       function raf(time) {
         lenis.raf(time)
         requestAnimationFrame(raf)
       }
       requestAnimationFrame(raf)
-    })
+      
+      return () => {
+        if (lenis) {
+          lenis.destroy(); // Clean up Lenis instance
+        }
+      };
+    },[]);
   
     return (
       <main ref={container}>
@@ -123,7 +129,7 @@ export default function Card ({i, title, description, src, color, progress, rang
 }
   `;
   return (
-    <div className='text-white'>
+    <div className='text-white w-full'>
         <h1 className="text-3xl font-primary pb-4">Cards Stack</h1>
         <p className='p-2 my-2'>The Cards Stack Component is a visually engaging and interactive UI element designed to display a collection of cards in an overlapping, stacked format. This component enhances user interaction by allowing the cards to dynamically respond to user actions, creating a sense of depth and motion. Ideal for showcasing portfolios, product listings, or any content that benefits from a layered presentation.</p>
         <div className='p-2 my-2'>

@@ -5,16 +5,20 @@ import { useScroll, useTransform, motion } from 'framer-motion';
 import { useRef } from 'react';
 
 export default function ParallexDemo() {
-  useEffect( () => {
+  useEffect(() => {
     const lenis = new Lenis()
-
     function raf(time) {
       lenis.raf(time)
       requestAnimationFrame(raf)
     }
-
     requestAnimationFrame(raf)
-  }, [])
+    
+    return () => {
+      if (lenis) {
+        lenis.destroy(); // Clean up Lenis instance
+      }
+    };
+  },[]);
 
   function IntroSection() {
     const container = useRef();
