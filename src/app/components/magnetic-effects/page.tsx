@@ -75,7 +75,7 @@ export default function Magnetic({children}) {
   };
   `;
   return (
-    <div className='text-white'>
+    <div className='text-white w-full'>
         <h1 className="text-3xl font-primary pb-4">Magnetic Effect</h1>
         <p className='p-2 my-2'>The Magnetic Effect Component is a dynamic and interactive UI element designed to enhance user engagement by creating a magnet-like attraction effect. As users move their cursor near the component, it smoothly follows the cursor, creating a captivating and fluid motion. This effect can add a playful and modern touch to various elements such as buttons, images, and cards, making them stand out and inviting users to interact.</p>
         <div className='p-2 my-2'>

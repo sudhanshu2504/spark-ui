@@ -156,7 +156,7 @@ export default function NavDemo() {
 }
   `;
   return (
-    <div className='text-white'>
+    <div className='text-white w-full'>
       <h1 className="text-3xl font-primary pb-4">Curved Navigation Menu</h1>
       <p className='p-2 my-2'>The Curved Navigation Menu is an elegantly designed user interface component built with React.js, TailwindCSS, and Framer Motion. This menu provides a smooth and interactive way to navigate through different sections of a website, enhancing the user experience with modern animations and a sleek curved design.</p>
       <div className='p-2 my-2'>

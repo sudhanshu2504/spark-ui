@@ -142,7 +142,7 @@ function Page() {
     <AnimatePresence mode="wait">
       {loader && <Preloader />}
     </AnimatePresence> 
-    <div className='text-white'>
+    <div className='text-white w-full'>
         <h1 className="text-3xl font-primary pb-4">Apple Preloader</h1>
         <p className='p-2 my-2'>The Apple Preloader Component is a sleek and engaging UI element inspired by Apple&apos;s iconic design language. This component features a dynamic loading animation combined with rotating greeting messages in different languages, providing a welcoming and inclusive user experience.</p>
         <div className='p-2 my-2'>

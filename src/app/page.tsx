@@ -10,7 +10,7 @@ import { TbComponents } from "react-icons/tb";
 
 const Content = () => {
   return(
-  <main className="min-h-screen flex flex-col md:flex-row gap-3 justify-evenly items-center container mx-auto z-[1]">
+  <main className="min-h-[90vh] flex flex-col md:flex-row gap-3 justify-evenly items-center container mx-auto z-[1]">
     <div className="">
       <Logo/>
     </div>
@@ -80,7 +80,7 @@ const HeroParallax = ({
     springConfig
   );
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.5, 1]),
+    useTransform(scrollYProgress, [0, 0.2], [0.3, 1]),
     springConfig
   );
   const textOpacity = useSpring(
@@ -117,7 +117,7 @@ const HeroParallax = ({
         }}
       >Our Components</motion.h1>
         <motion.div className="h-[300px] w-[150%] -translate-x-[25%] flex flex-row space-x-20">
-          <Marquee className="[--duration:40s] antialiased h-[450px]">
+          <Marquee className="[--duration:25s] antialiased h-[450px]">
             {firstRow.map((component) => (
               <div key={component.name} className="flex flex-col gap-2 h-1/2 w-1/2 border border-gray-500/50 rounded-md ">
               <img
@@ -131,7 +131,7 @@ const HeroParallax = ({
           </Marquee>
         </motion.div>
         <motion.div className="h-[300px] w-[150%] -translate-x-[25%] flex flex-row space-x-20">
-          <Marquee className="[--duration:30s] antialiased h-[450px]">
+          <Marquee reverse className="[--duration:25s] antialiased h-[450px]">
             {secondRow.map((component) => (
               <div key={component.name} className="flex flex-col gap-2 h-1/2 w-1/2 border border-gray-500/50 rounded-md ">
               <img

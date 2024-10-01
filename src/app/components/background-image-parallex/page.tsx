@@ -103,7 +103,7 @@ export default function ParallexDemo() {
 
   const [codeView, setCodeView] = useState(false);
   return (
-    <div className='text-white'>
+    <div className='text-white w-full'>
       <h1 className="text-3xl font-primary pb-4">Background Image Parallex</h1>
       <p className='p-2 my-2'>The Background Image Parallax Effect is a visually captivating UI feature that creates an illusion of depth and movement on a webpage. As users scroll through the content, the background images move at a slower pace compared to the foreground content, producing a stunning 3D-like effect. This technique enhances the user experience by adding a dynamic and engaging element to your website.</p>
       <div className='p-2 my-2'>

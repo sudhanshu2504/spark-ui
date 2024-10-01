@@ -74,7 +74,7 @@ export default function MouseFollower() {
 
   `;
   return (
-    <div className='text-white'>
+    <div className='text-white w-full'>
         <MouseFollower/>
         <h1 className="text-3xl font-primary pb-4">Mouse Follower</h1>
         <p className='p-2 my-2'>The Mouse Follower Element is a dynamic UI component that enhances user interaction by smoothly tracking and following the user&apos;s mouse movements across the screen. Built with React and Framer Motion, this element adds a modern and engaging effect to your website, providing a more interactive and visually appealing experience for users.</p>
