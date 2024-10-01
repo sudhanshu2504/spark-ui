@@ -79,7 +79,7 @@ export default function Page() {
             <div className="rounded-lg bg-yellow-400 text-black backdrop-blur-2xl p-6 shadow-lg w-full md:w-[49%] lg:w-[24%]">
               <div className="flex flex-col justify-evenly gap-4 h-full">
                 <div>
-                  <h3 className="text-base font-medium text-white">Webpage Develop & Design</h3>
+                  <h3 className="text-sm font-medium text-yellow-400 bg-gray-900 py-0.5 px-2 rounded-md w-fit">Webpage Develop & Design</h3>
                   <p className="text-sm">Tailored for early startups and organizations.</p>
                 </div>
                 <div className="flex items-end gap-2">
@@ -104,7 +104,7 @@ export default function Page() {
                     <span>Dedicated support</span>
                   </li>
                 </ul>
-                <button className="bg-white text-black mt-10 rounded-lg w-full py-2 text-center hover:scale-105 transition-all" disabled>Coming Soon</button>
+                <button className="text-yellow-400 bg-gray-900 mt-10 rounded-lg w-full py-2 text-center hover:scale-105 transition-all" disabled>Coming Soon</button>
               </div>
             </div>
             <div className="rounded-lg bg-gray-900/80 backdrop-blur-2xl p-6 shadow-lg w-full md:w-[49%] lg:w-[24%]">
