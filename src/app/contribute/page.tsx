@@ -56,7 +56,7 @@ function ContributeForm() {
 
   return (
     <div className="w-full lg:w-auto rounded-none md:rounded-2xl">
-      <form className="pt-4 -mb-5" onSubmit={submitForm}>
+      <form onSubmit={submitForm}>
         <LabelInputContainer>
           <Label className="text-white font-light my-1" htmlFor="name">Your Name</Label>
           <Input id="name" name="Name" type="text" value={name} onChange={(e)=>setName(e.target.value)} required/>
@@ -75,9 +75,8 @@ function ContributeForm() {
         </LabelInputContainer>
         
         <button
-          className="bg-gradient-to-br align-middle relative text-lg mx-auto block w-full px-8 text-white rounded-md h-12 font-medium hover:scale-110 transition-transform mt-4"
+          className="bg-yellow-400 align-middle relative text-lg mx-auto block w-full px-8 text-white font-medium rounded-md h-12 hover:scale-110 transition-transform mt-4"
           type="submit"
-          style={{background: "linear-gradient(90deg, #FFC700 0%, #FF5107 117.18%)"}}
         >
           {(formState === "") && "Join Waitlist →"}
           {(formState === "Sending") &&  <Spinner color="default" className="font-bold"/>}
@@ -96,15 +95,15 @@ function Page() {
     <div className='min-h-screen'>
         <div className="h-[50rem] w-full bg-black bg-grid-white/[0.1] relative flex items-start justify-center">
       {/* Radial gradient for the container to give a faded look */}
-      <div className="absolute pointer-events-none inset-0 bg-black flex items-center justify-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      <div className="absolute pointer-events-none inset-0 bg-black flex items-center justify-center [mask-image:radial-gradient(ellipse_at_center,transparent_40%,black)]"></div>
       <div className=''>
         <div className="py-16 px-6 text-white w-full text-lg md:text-3xl font-black text-center">
           Looking forward to make a Contribution as a Developer?
           <div className='text-center w-full text-gray-500 text-sm md:text-lg'>Join the waitlist by filling the form below</div>
         </div>
-        <div className="max-w-5xl h-auto md:mx-auto rounded-2xl mx-2 p-10 text-xl md:text-4xl font-bold border-[0.89px] border-opacity-35 border-[#9F9F9F] text-white  flex flex-row justify-evenly flex-wrap backdrop-blur-3xl" style={{background: "linear-gradient(73.32deg, rgba(255, 199, 0, 0.08) 2.81%, rgba(252, 252, 253, 0.0632) 93.81%)"
+        <div className="max-w-5xl h-auto md:mx-auto rounded-2xl mx-2 p-10 text-xl md:text-4xl font-bold border-[0.89px] border-opacity-35 border-[#9F9F9F] text-white  flex flex-row justify-evenly flex-wrap backdrop-blur-3xl" style={{background: "linear-gradient(73.32deg, rgba(255, 255, 0, 0.08), rgba(252, 252, 253, 0.0632))"
       }}>
-          <div className='lg:w-1/2 w-full min-h-96 my-auto'>
+          <div className='lg:w-1/2 w-full min-h-80 my-auto'>
             <ContributeForm/>
           </div>
           <div className='hidden lg:block w-1/2 h-full min-h-96'>

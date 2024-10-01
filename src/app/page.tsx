@@ -55,40 +55,6 @@ const Content = () => {
     </main>
     )
 }
-const Card = ({
-  component,
-  translate,
-}: {
-  component: {
-    name: string;
-    link: string;
-    img: string;
-  };
-  translate: MotionValue<number>;
-}) => {
-  return (
-    <motion.div
-      style={{
-        x: translate,
-      }}
-      whileHover={{
-        y: -20,
-      }}
-      key={component.name}
-      className="group/component h-[300px] w-[450px] relative flex-shrink-0 bg-red-700"
-    >
-      <img
-        src={`/assests/components_preview/${component.img}`}
-        className="object-cover object-left-top absolute h-full w-full inset-0"
-        alt={component.name}
-      />
-      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/component:opacity-80 bg-black pointer-events-none"></div>
-      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/component:opacity-100 text-white">
-        {component.name}
-      </h2>
-    </motion.div>
-  );
-};
 const HeroParallax = ({
   components,
 }: {
@@ -98,8 +64,8 @@ const HeroParallax = ({
     img: string;
   }[];
 }) => {
-  const firstRow = components.slice(0, 5);
-  const secondRow = components.slice(5, 10);
+  const firstRow = components.slice(0, 3);
+  const secondRow = components.slice(3, 6);
   const thirdRow = components.slice(10, 15);
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
@@ -109,20 +75,16 @@ const HeroParallax = ({
  
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
  
-  const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [450, 1000]),
-    springConfig
-  );
-  const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
-    springConfig
-  );
   const rotateX = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [25, 0]),
     springConfig
   );
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.2, 0.9]),
+    useTransform(scrollYProgress, [0, 0.2], [0.5, 1]),
+    springConfig
+  );
+  const textOpacity = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [0, 1]),
     springConfig
   );
   const rotateZ = useSpring(
@@ -130,13 +92,13 @@ const HeroParallax = ({
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-800, 300]),
+    useTransform(scrollYProgress, [0, 0.2], [-750, 50]),
     springConfig
   );
   return (
     <div
       ref={ref}
-      className="h-[120vh] overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-auto w-full pb-20 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Content />
       <motion.div
@@ -148,23 +110,39 @@ const HeroParallax = ({
         }}
         className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-          {firstRow.map((component) => (
-            <Card
-              component={component}
-              translate={translateX}
-              key={component.name}
-            />
-          ))}
+        
+      <motion.h1 className="md:text-5xl text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-100 to-gray-500 text-center mb-6"
+        style={{
+          opacity: textOpacity,
+        }}
+      >Our Components</motion.h1>
+        <motion.div className="h-[300px] w-[150%] -translate-x-[25%] flex flex-row space-x-20">
+          <Marquee className="[--duration:40s] antialiased h-[450px]">
+            {firstRow.map((component) => (
+              <div key={component.name} className="flex flex-col gap-2 h-1/2 w-1/2 border border-gray-500/50 rounded-md ">
+              <img
+                src={`/assests/components_preview/${component.img}`}
+                alt={component.name}
+                className="h-full w-full object-cover object-center"
+              />
+              <h3 className="text-white">{component.name}</h3>
+            </div>
+            ))}
+          </Marquee>
         </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-20 ">
-          {secondRow.map((component) => (
-            <Card
-              component={component}
-              translate={translateXReverse}
-              key={component.name}
-            />
-          ))}
+        <motion.div className="h-[300px] w-[150%] -translate-x-[25%] flex flex-row space-x-20">
+          <Marquee className="[--duration:30s] antialiased h-[450px]">
+            {secondRow.map((component) => (
+              <div key={component.name} className="flex flex-col gap-2 h-1/2 w-1/2 border border-gray-500/50 rounded-md ">
+              <img
+                src={`/assests/components_preview/${component.img}`}
+                alt={component.name}
+                className="h-full w-full object-cover object-center"
+              />
+              <h3 className="text-white">{component.name}</h3>
+            </div>
+            ))}
+          </Marquee>
         </motion.div>
         {/* <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
           {thirdRow.map((component) => (
@@ -182,7 +160,7 @@ const HeroParallax = ({
 const OurComponents = () => {
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="md:text-5xl text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-100 to-gray-500 text-center mb-6">Our Components</h1>
+      <h1 className={`md:text-5xl text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-100 to-gray-500 text-center mb-6`}>Our Components</h1>
       <div className="flex flex-row flex-wrap gap-4">
       <Marquee className="[--duration:35s] antialiased h-[500px]">
         {components.map((component) => (
@@ -269,7 +247,7 @@ const Features = () => {
 const TryItNow = () => {
   return(
     <section className="py-60 md:py-40 bg-yellow-400 px-4 md:px-8 lg:px-12">
-        <div className="max-w-3xl mx-auto text-center space-y-4">
+      <div className="max-w-3xl mx-auto text-center space-y-4">
           <h2 className="text-3xl md:text-4xl font-bold text-black">Unlock the Spark of Premium UI</h2>
           <p className="text-black/75">
             Our library of high-quality components is designed to help you build stunning and responsive web
@@ -278,7 +256,7 @@ const TryItNow = () => {
           <div className="flex justify-center gap-4">
             <Link
               href="/components"
-              className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium text-black shadow-sm transition-colors hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-[#1e293b]"
+              className="inline-flex items-center justify-center rounded-md bg-gray-800 px-4 py-2 text-sm md:text-base font-medium text-yellow-400 shadow-sm transition-colors hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-[#1e293b]"
               prefetch={false}
             >
               Try It Now
@@ -313,7 +291,7 @@ export default function Home() {
   return (
       <>
         <HeroParallax components={components} />
-        <OurComponents />
+        {/* <OurComponents /> */}
         <Features />
         <TryItNow />
         <Contribute />

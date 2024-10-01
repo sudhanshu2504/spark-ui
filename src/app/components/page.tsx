@@ -4,17 +4,19 @@ import components from '@/content/components';
 import { SiSparkar } from "react-icons/si";
 
 const Card = (component: any) => {
+
+  const [isHovered, setIsHovered] = React.useState(false);
   const navigate = (link: string) => {
     window.location.href = `/components/${link}`;
   }
   return (
-    <div className='flex flex-col gap-1 w-[450px] max-w-full cursor-pointer' onClick={()=>navigate(component.link)}>
+    <div className='flex flex-col gap-1 w-[450px] max-w-full cursor-pointer' onClick={()=>navigate(component.link)} onMouseEnter={()=>setIsHovered(true)} onMouseLeave={()=>setIsHovered(false)}>
       <div className='w-full h-auto overflow-hidden rounded-md border border-gray-500 border-opacity-50'>
        {(component.img)?(<img src={`./assests/components_preview/${component.img}`} alt="SparkUI" className='h-full w-full duration-300 hover:scale-105' />):
       (<div className='h-300px w-full duration-300 hover:scale-110'> <SiSparkar/> </div>)}
       </div>
         <h1 className='font-primary font-medium text-lg'>{component.name}</h1>
-        <p className='font-normal text-sm'>{component.description}</p>
+        <p className={`font-normal text-sm transition-colors ${isHovered?("text-gray-300"):("text-gray-500")}`}>{component.description}</p>
     </div>
   )
 }
