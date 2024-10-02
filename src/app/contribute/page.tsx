@@ -75,7 +75,7 @@ function ContributeForm() {
         </LabelInputContainer>
         
         <button
-          className="bg-yellow-400 align-middle relative text-lg mx-auto block w-full px-8 text-white font-medium rounded-md h-12 hover:scale-110 transition-transform mt-4"
+          className="bg-yellow-400 align-middle relative text-lg mx-auto block w-full px-8 text-black font-medium rounded-md h-12 hover:scale-110 transition-transform mt-4"
           type="submit"
         >
           {(formState === "") && "Join Waitlist →"}

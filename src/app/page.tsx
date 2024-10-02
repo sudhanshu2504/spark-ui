@@ -80,7 +80,7 @@ const HeroParallax = ({
     springConfig
   );
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.3, 1]),
+    useTransform(scrollYProgress, [0, 0.1], [0.3, 1]),
     springConfig
   );
   const textOpacity = useSpring(
@@ -117,30 +117,34 @@ const HeroParallax = ({
         }}
       >Our Components</motion.h1>
         <motion.div className="h-[300px] w-[150%] -translate-x-[25%] flex flex-row space-x-20">
-          <Marquee className="[--duration:25s] antialiased h-[450px]">
+          <Marquee pauseOnHover className="[--duration:25s] antialiased h-[450px] w-full">
             {firstRow.map((component) => (
-              <div key={component.name} className="flex flex-col gap-2 h-1/2 w-1/2 border border-gray-500/50 rounded-md ">
+              <Link href={`/components/${component.link}`} key={component.name}>
+              <div className="flex flex-col max-w-[380px] gap-2 h-1/2 border border-gray-500/50 rounded-md ">
               <img
                 src={`/assests/components_preview/${component.img}`}
                 alt={component.name}
-                className="h-full w-full object-cover object-center"
+                className="h-full w-full object-contain object-center"
               />
-              <h3 className="text-white">{component.name}</h3>
             </div>
+              <h3 className="text-white">{component.name}</h3>
+            </Link>
             ))}
           </Marquee>
         </motion.div>
         <motion.div className="h-[300px] w-[150%] -translate-x-[25%] flex flex-row space-x-20">
-          <Marquee reverse className="[--duration:25s] antialiased h-[450px]">
+          <Marquee pauseOnHover reverse className="[--duration:25s] antialiased h-[450px] w-full">
             {secondRow.map((component) => (
-              <div key={component.name} className="flex flex-col gap-2 h-1/2 w-1/2 border border-gray-500/50 rounded-md ">
+              <Link href={`/components/${component.link}`} key={component.name}>
+              <div className="flex flex-col max-w-[380px] gap-2 h-1/2 border border-gray-500/50 rounded-md ">
               <img
                 src={`/assests/components_preview/${component.img}`}
                 alt={component.name}
-                className="h-full w-full object-cover object-center"
+                className="h-full w-full object-contain object-center"
               />
-              <h3 className="text-white">{component.name}</h3>
             </div>
+              <h3 className="text-white">{component.name}</h3>
+            </Link>
             ))}
           </Marquee>
         </motion.div>
