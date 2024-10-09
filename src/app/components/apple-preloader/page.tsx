@@ -123,13 +123,12 @@ function Page() {
   import {AnimatePresence} from 'framer-motion';
 
   function Page() {
-  const [loader, setLoader] = useState(false);
-  const startLoader = () => {
-    setLoader(true);
+  const [loader, setLoader] = useState(true);
+  useEffect(() => {
     setTimeout(() => {
       setLoader(false);
     }, 2250);
-  };
+  }, []);
   return (<>
     <AnimatePresence mode="wait">
       {loader && <Preloader />}
