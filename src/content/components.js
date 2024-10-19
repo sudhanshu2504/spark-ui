@@ -1,5 +1,12 @@
 const components = [
     {
+        name: 'Animated Carousel',
+        link: 'animated-carousel',
+        img: 'animated_carousel.png',
+        latest: true,
+        description : "An animated carousel that displays images and text in a slideshow format. It provides a smooth transition between slides.",
+    },
+    {
         name: 'Apple Preloader',
         link: 'apple-preloader',
         img: 'apple_preloader.png',

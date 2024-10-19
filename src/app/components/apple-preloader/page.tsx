@@ -134,7 +134,9 @@ function Page() {
       {loader && <Preloader />}
     </AnimatePresence> 
     /* Your content goes here */
-    </>
+    </>)
+  }
+  export default Page;
   `;
   ;
   return (<>

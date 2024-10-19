@@ -9,6 +9,8 @@
 
 # testing
 /coverage
+/src/app/playground
+/src/app/playground2
 
 # next.js
 /.next/

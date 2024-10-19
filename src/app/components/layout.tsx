@@ -25,10 +25,13 @@ export default function Layout({children,}: Readonly<{children: ReactNode;}>){
             <div className='flex flex-col items-start'>
               <h1 className='text-white font-semibold'>All Components</h1>
               {components.map((component, index) => (
-                <div key={index} className='py-1'>
+                <div key={index} className={`py-1 flex items-center`}>
                   <Link href={`/components/${component.link}`} className='text-gray-400 text-sm hover:text-yellow-400 duration-150'>
                     {component.name}
                   </Link>
+                  {component.latest && <div className='flex ml-1 px-1  border-green-600 border-1 rounded-md'>
+                    <div className='text-green-500 text-[10px] text-center font-semibold'>New</div>
+                  </div>}
                 </div>
               ))}
             </div>
