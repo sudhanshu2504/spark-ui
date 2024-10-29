@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /api/
+Disallow: /_next/
+Disallow: /404
+Disallow: /500
+
+# Sitemap
+Sitemap: https://sparkui.me/sitemap.xml
