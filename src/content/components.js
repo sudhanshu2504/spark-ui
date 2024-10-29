@@ -19,6 +19,13 @@ const components = [
         description: "Smooth parallex effect on the background image that moves at a different speed than the foreground content.",
     },
     {
+        name: 'Card Reveal Effect',
+        link: 'card-reveal-effect',
+        img: 'card_reveal_effect.png',
+        latest: true,
+        description: "A card reveal effect that displays the hidden content on hover. It provides a smooth transition of a book to the content.", 
+    },
+    {
         name: 'Cards Stack',
         link: 'cards-stack',
         img: 'cards_stack.png',

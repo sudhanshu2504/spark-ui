@@ -21,7 +21,7 @@ const Content = () => {
           as="button"
           className="bg-black flex items-center text-sm"
         >
-          <span className="bg-clip-text z-0 bg-gradient-to-br to-[rgb(255,255,255,0.18)] from-[rgb(255,255,255,0.38)]">Introducing SparkUI</span>
+          <span className="bg-clip-text mx-2 z-0 bg-gradient-to-br to-[rgb(255,255,255,0.18)] from-[rgb(255,255,255,0.38)]">Introducing SparkUI</span>
         </HoverBorderGradient>
         <h1 className="font-black md:text-4xl text-base text-center text-white text-wrap max-w-screen-md px-4">
         Transform your web projects into <span className="text-yellow-400 underline underline-offset-2">Spark</span>, the next-generation <span className="text-yellow-400 underline underline-offset-2">UI Library</span> designed for seamless, dynamic, and stunning user interfaces.
