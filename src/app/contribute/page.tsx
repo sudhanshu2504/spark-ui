@@ -30,6 +30,7 @@ function ContributeForm() {
         formData.append("Github", githubUsername);
         formData.append("Name", name);
         formData.append("Message", message);
+        formData.append("Applied On", new Date().toLocaleDateString());
         await fetch(
             "https://script.google.com/macros/s/AKfycbxqZkO8RZfaJBfnyVXB_TUXj2yDrXLE8XFJnM_6V2g1SkGT-TROmrBxFTPTCZp4Q-uHRg/exec",
             {
