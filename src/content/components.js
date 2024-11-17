@@ -38,6 +38,13 @@ const components = [
         description : "A curved navbar with a logo and links to other pages. It provides a smooth transition to the webpages.",
     },
     {
+        name: 'Image Sliders',
+        link: 'image-sliders',
+        img: 'image_sliders.png',
+        latest: true,
+        description : "The Image Slider Component is a captivating and user-friendly way to display a series of images with engaging animations.",
+    },
+    {
         name: 'Magnetic Effects',
         link: 'magnetic-effects',
         img: 'magnetic_effects.png',

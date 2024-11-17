@@ -29,7 +29,7 @@ export default function Navigation() {
   {<div ref={ref} className={`${(isMenuOpen)?'translate-y-0 delay-200':"-translate-y-full delay-0"}  duration-500 transition-transform h-screen w-screen bg-code fixed z-50 top-0`}>
     <div className="container mx-auto h-4/5">
       <div className="h-full">
-          <div className="w-4/5 mx-auto">
+          <div className="w-[85%] mx-auto">
             <button className="w-full flex justify-end font-black font-primary text-4xl mt-5 text-white" onClick={()=>setIsMenuOpen(false)}><IoClose/></button>
           </div>
           <div className="h-full w-full flex flex-col justify-around items-center">
