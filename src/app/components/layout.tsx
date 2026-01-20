@@ -1,10 +1,14 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import layout from '@/content/layout.js';
-import components from '@/content/components.js';
+import { getComponents } from '@/lib/fetchCMSData';
+import _ from 'lodash';
+import { Component } from '@/types/components';
 
 
-export default function Layout({children,}: Readonly<{children: ReactNode;}>){
+export default async function Layout({children,}: Readonly<{children: ReactNode;}>){
+  let components: Component[] = await getComponents('name,slug,isActive, isNewComponent');
+
   return (
     <>
       <div className="flex flex-row">
@@ -26,10 +30,10 @@ export default function Layout({children,}: Readonly<{children: ReactNode;}>){
               <h1 className='text-white font-semibold'>All Components</h1>
               {components.map((component, index) => (
                 <div key={index} className={`py-1 flex items-center`}>
-                  <Link href={`/components/${component.link}`} className='text-gray-400 text-sm hover:text-yellow-400 duration-150'>
+                  <Link href={`/components/${component.slug}`} className='text-gray-400 text-sm hover:text-yellow-400 duration-150'>
                     {component.name}
                   </Link>
-                  {component.latest && <div className='flex ml-1 px-1  border-green-600 border-1 rounded-md'>
+                  {component.isNewComponent && <div className='flex ml-1 px-1  border-green-600 border-1 rounded-md'>
                     <div className='text-green-500 text-[10px] text-center font-semibold'>New</div>
                   </div>}
                 </div>

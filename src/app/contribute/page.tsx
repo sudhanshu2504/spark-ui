@@ -1,7 +1,7 @@
 'use client'
 import React, {useEffect,useState} from 'react'
 import {Spotlight} from '@/components/ui/spotlight';
-import {Spinner} from "@nextui-org/react";
+import {Spinner} from "@heroui/react";
 import Image from 'next/image';
 import {Input} from '@/components/ui/input';
 import {Label} from '@/components/ui/label';
@@ -18,7 +18,6 @@ function ContributeForm() {
     setFormState("Sending");
     event.preventDefault();
     const form = event.currentTarget;
-    console.log(form.checkValidity());
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();

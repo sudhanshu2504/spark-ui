@@ -1,4 +1,4 @@
-import {nextui} from "@nextui-org/react";
+import {heroui} from "@heroui/react";
 const svgToDataUri = require("mini-svg-data-uri");
 const colors = require("tailwindcss/colors");
 const {
@@ -9,8 +9,9 @@ const config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",    
+    "./src/content/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@heroui/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
   	extend: {
@@ -50,7 +51,7 @@ const config = {
   	}
   },
   darkMode: ["class", "class"],
-  plugins: [nextui(),
+  plugins: [heroui(),
     addVariablesForColors,
     function ({ matchUtilities, theme }: any) {
     matchUtilities(
