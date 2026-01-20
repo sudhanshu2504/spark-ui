@@ -1,7 +1,7 @@
-'use client';
-import React, { useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
-import { useEffect } from 'react';
+"use client";
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect } from "react";
 
 const opacity = {
   initial: {
@@ -49,7 +49,7 @@ function PreloaderComponent() {
       () => {
         setIndex(index + 1);
       },
-      index === 0 ? 1000 : 150
+      index === 0 ? 1000 : 150,
     );
   }, [index]);
 
@@ -99,7 +99,6 @@ function PreloaderComponent() {
   );
 }
 
-// Demo wrapper component
 export default function Preloader() {
   const [loader, setLoader] = useState(false);
 
@@ -116,8 +115,8 @@ export default function Preloader() {
         {loader && <PreloaderComponent />}
       </AnimatePresence>
       <div className="bg-code h-full w-full flex justify-center items-center">
-        <button 
-          className='px-4 py-2 bg-white rounded-md text-black hover:bg-gray-200 transition-colors' 
+        <button
+          className="px-4 py-2 bg-white rounded-md text-black hover:bg-gray-200 transition-colors"
           onClick={startLoader}
         >
           Start Preloader

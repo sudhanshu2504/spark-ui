@@ -6,7 +6,6 @@ import Card from '@/components/ui/components_card';
 
 async function page() {
   const components: Component[] = await getComponents('name,slug,thumbnailURL,description');
-  console.log(components.length)
   
   return (
     <div className='text-white flex flex-row flex-wrap items-start justify-center w-full gap-y-8 gap-x-2 h-auto'>

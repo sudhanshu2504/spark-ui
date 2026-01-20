@@ -120,7 +120,7 @@ export default function DefaultComponent() {
                         animate={{ opacity: 1, x: 0 }}
                         className="text-purple-400"
                       >
-                        <span className="text-gray-500">1</span> <span className="text-pink-400">import</span> <span className="text-yellow-400">Component</span> <span className="text-pink-400">from</span> <span className="text-green-400">'./Component'</span>;
+                        <span className="text-gray-500">1</span> <span className="text-pink-400">import</span> <span className="text-yellow-400">Component</span> <span className="text-pink-400">from</span> <span className="text-green-400">&apos;./Component&apos;</span>;
                       </motion.div>
                     )}
                     {codeLines >= 2 && (
