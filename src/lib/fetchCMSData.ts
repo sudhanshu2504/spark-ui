@@ -2,12 +2,6 @@ import { cache } from "react";
 import constants from "@/utils/constants";
 import _ from "lodash";
 
-/**
- * Fetch components with Next.js caching and ISR
- * - Uses Next.js fetch API for automatic caching
- * - Revalidates every 3600 seconds (1 hour)
- * - Request memoization via React cache()
- */
 export const getComponents = cache(async (
   queryFields: string = "name,slug,isActive, isNewComponent"
 ) => {
@@ -53,12 +47,6 @@ export const getComponents = cache(async (
   }
 });
 
-/**
- * Fetch component by slug with Next.js caching and ISR
- * - Uses Next.js fetch API for automatic caching
- * - Revalidates every 3600 seconds (1 hour)
- * - Request memoization via React cache()
- */
 export const getComponentsBySlug = cache(async (
   slug: string
 ) => {
@@ -95,3 +83,24 @@ export const getComponentsBySlug = cache(async (
     return [];
   }
 });
+
+export async function getHomePageData() {
+  try {
+    const res = await fetch(
+      `${constants.CMS.BASE_URL}/api/webpages?where[slug][equals]=homepage`,
+      {
+        next: { revalidate: 43200 }, // Cache expires every 12 hours
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch homepage data");
+    }
+
+    const data = await res.json();
+    return data.docs[0]; // Returns the first matching webpage
+  } catch (error) {
+    console.error("Error fetching homepage data from CMS:", error);
+    return null;
+  }
+}
