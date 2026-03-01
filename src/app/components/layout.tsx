@@ -33,7 +33,7 @@ export default async function Layout({children,}: Readonly<{children: ReactNode;
                   <Link href={`/components/${component.slug}`} className='text-gray-400 text-sm hover:text-yellow-400 duration-150'>
                     {component.name}
                   </Link>
-                  {component.isNewComponent && <div className='flex ml-1 px-1  border-green-600 border-1 rounded-md'>
+                  {component?.isNewComponent && <div className='flex ml-1 px-1  border-green-600 border-1 rounded-md'>
                     <div className='text-green-500 text-[10px] text-center font-semibold'>New</div>
                   </div>}
                 </div>

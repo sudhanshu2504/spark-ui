@@ -7,11 +7,20 @@ import Card from '@/components/ui/components_card';
 async function page() {
   const components: Component[] = await getComponents('name,slug,thumbnailURL,description');
   
+  if (!components || components.length === 0) {
+    return (
+      <div className='text-white text-center p-10'>
+        <h1>No components found</h1>
+        <p>Check the console for errors</p>
+      </div>
+    );
+  }
+  
   return (
     <div className='text-white flex flex-row flex-wrap items-start justify-center w-full gap-y-8 gap-x-2 h-auto'>
       {components.map((component, index) => {
         return (
-            <Card key={index} {...component}/>
+            <Card key={component.slug || index} {...component}/>
         )
       })}
       <div className='flex flex-col gap-1 w-[450px] max-w-full cursor-pointer'>
@@ -26,3 +35,6 @@ async function page() {
 }
 
 export default page
+
+
+
