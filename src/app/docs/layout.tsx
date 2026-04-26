@@ -2,8 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { ReactNode } from 'react';
-import layout from '@/content/layout.js';
-import components from '@/content/components.js';
+import layout from '@/content/layout';
+import components from '@/content/components';
 
 interface LayoutProps {
   children: ReactNode;

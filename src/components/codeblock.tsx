@@ -1,8 +1,8 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {vscDarkPlus} from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { MdContentCopy } from "react-icons/md";
+import { MdContentCopy, MdCheck } from "react-icons/md";
 
 interface CodeBlockProps {
   code: string;
@@ -10,17 +10,22 @@ interface CodeBlockProps {
 }
 
 const CodeBlock: React.FC<CodeBlockProps> = ({ code, language }) => {
+  const [copied, setCopied] = useState(false);
+
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(code);
+    navigator.clipboard.writeText(code).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
   };
 
   return (
     <div className="relative w-full rounded-md">
       <button
-        onClick={()=>copyToClipboard()}
+        onClick={copyToClipboard}
         className="absolute top-2 right-2 text-white p-2 rounded"
       >
-        <MdContentCopy/>
+        {copied ? <MdCheck className="text-green-400" /> : <MdContentCopy />}
       </button>
       <div className="rounded-lg border border-gray-700 overflow-hidden text-xl">
         <SyntaxHighlighter

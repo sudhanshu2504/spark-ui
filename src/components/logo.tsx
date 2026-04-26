@@ -5,11 +5,12 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 const Logo = () => {
-  const svgRef = useRef(null);
-  const pathRef = useRef(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
     const path = pathRef.current;
+    if (!path) return;
 
     // Get the total length of the path for animation
     const pathLength = path.getTotalLength();

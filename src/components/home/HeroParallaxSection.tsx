@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useSpring, MotionValue } from "motion/react";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import Marquee from "@/components/ui/marquee";
 
 export default function HeroParallaxSection({
@@ -20,9 +20,15 @@ export default function HeroParallaxSection({
 }) {
   const firstRow = components.slice(0, 3);
   const secondRow = components.slice(3, 6);
-  const ref = React.useRef(null);
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: mounted ? ref : undefined,
     offset: ["start start", "end start"],
   });
 

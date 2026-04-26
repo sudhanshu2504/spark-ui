@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
-import layout from '@/content/layout.js';
+import layout from '@/content/layout';
 import { getComponents } from '@/lib/fetchCMSData';
 import _ from 'lodash';
 import { Component } from '@/types/components';

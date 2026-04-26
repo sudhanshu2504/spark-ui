@@ -1,5 +1,6 @@
 'use client'
 import React from "react";
+import Link from "next/link";
 import { motion } from 'motion/react';
 import { useInView } from 'react-intersection-observer';
 import { FaBarsStaggered } from "react-icons/fa6";
@@ -10,7 +11,7 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const animation = {
     initial: {y: "100%"},
-    enter: i => ({y: "0", transition: {duration: 1, ease: [0.33, 1, 0.68, 1],  delay: 0.075 * i}})
+    enter: (i: number) => ({y: "0", transition: {duration: 1, ease: [0.33, 1, 0.68, 1] as const,  delay: 0.075 * i}})
   }
 
   const { ref, inView, entry } = useInView({
@@ -34,19 +35,19 @@ export default function Navigation() {
           </div>
           <div className="h-full w-full flex flex-col justify-around items-center">
             <div className="overflow-hidden">
-              <motion.p variants={animation} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><a href="/" onClick={()=>setIsMenuOpen(false)}>Home</a></motion.p>
+              <motion.p variants={animation} custom={0} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><Link href="/" onClick={()=>setIsMenuOpen(false)}>Home</Link></motion.p>
               </div>
             <div className="overflow-hidden">
-              <motion.p variants={animation} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><a href="/about" onClick={()=>setIsMenuOpen(false)}>About</a></motion.p>
+              <motion.p variants={animation} custom={1} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><Link href="/about" onClick={()=>setIsMenuOpen(false)}>About</Link></motion.p>
               </div>
             <div className="overflow-hidden">
-              <motion.p variants={animation} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><a href="/components" onClick={()=>setIsMenuOpen(false)}>Components</a></motion.p>
+              <motion.p variants={animation} custom={2} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><Link href="/components" onClick={()=>setIsMenuOpen(false)}>Components</Link></motion.p>
               </div>
             <div className="overflow-hidden">
-              <motion.p variants={animation} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><a href="/pricing" onClick={()=>setIsMenuOpen(false)}>Pricing</a></motion.p>
+              <motion.p variants={animation} custom={3} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><Link href="/pricing" onClick={()=>setIsMenuOpen(false)}>Pricing</Link></motion.p>
             </div>
             <div className="overflow-hidden">
-              <motion.p variants={animation} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><a href="/contribute" onClick={()=>setIsMenuOpen(false)}>Contribute</a></motion.p>
+              <motion.p variants={animation} custom={4} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><Link href="/contribute" onClick={()=>setIsMenuOpen(false)}>Contribute</Link></motion.p>
             </div>
           </div>
       </div>

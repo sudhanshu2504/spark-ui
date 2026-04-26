@@ -34,14 +34,14 @@ function DisplayPage({ data }: DisplayPageProps) {
 
         {data.features &&
           <div className="p-2 my-2">
-            <h1 className="text-lg">Features :</h1>
-            <span>
+            <h3 className="text-lg">Features :</h3>
+            <ul>
               {data.features.map((feature: any) => (
                 <li key={feature.id} className="ml-5 list-disc">
                   {feature.point}
                 </li>
               ))}
-            </span>
+            </ul>
           </div>}
 
         <div className="buttons flex flex-row gap-2 my-6">
@@ -89,9 +89,9 @@ function DisplayPage({ data }: DisplayPageProps) {
             <span className="bg-gray-400 w-[6px] h-full rounded-tr-full rounded-br-full"></span>
             <span className="text-white">Copy the Source code</span>
           </span>
-          <span className="text-gray-300 text-sm ml-5 pb-2">
-            `{data.path}`
-          </span>
+          <code className="text-gray-300 text-sm ml-5 pb-2">
+            {data.path}
+          </code>
           <span className="flex h-[75vh] overflow-y-scroll max-w-screen-lg rounded-md pl-5" data-lenis-prevent>
             <CodeBlock code={code} language="javascript" />
           </span>

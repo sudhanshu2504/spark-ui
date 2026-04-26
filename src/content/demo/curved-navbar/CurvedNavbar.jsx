@@ -1,5 +1,5 @@
 "use client";
-import { React, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { IoClose } from "react-icons/io5";

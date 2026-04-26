@@ -28,7 +28,6 @@ const Carousel = () => {
 
     let runNextAuto;
 
-
     const showSlider = (type) => {
       const sliderItemsDom = sliderDom.current.querySelectorAll('.item');
       const thumbnailItemsDom = thumbnailBorderDom.current.querySelectorAll('.item');

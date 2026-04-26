@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, React } from 'react';
+import { useEffect } from 'react';
 import Lenis from 'lenis';
 import { useScroll, useTransform, motion } from 'motion/react';
 import { useRef } from 'react';
