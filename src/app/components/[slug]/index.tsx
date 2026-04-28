@@ -72,7 +72,7 @@ function DisplayPage({ data }: DisplayPageProps) {
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
-              className={`flex items-center gap-1.5 text-sm font-medium px-3.5 py-1.5 rounded-md transition-all duration-150 ${
+              className={`flex items-center gap-1.5 text-xs sm:text-sm font-medium px-3 sm:px-3.5 py-1.5 rounded-md transition-all duration-150 ${
                 activeTab === tab.key
                   ? "bg-surface-3 text-ink shadow-sm"
                   : "text-ink-mute hover:text-ink-soft"
@@ -87,11 +87,11 @@ function DisplayPage({ data }: DisplayPageProps) {
 
       {/* ── Preview / Code area ──────────────────── */}
       {activeTab === "preview" ? (
-        <div className={data.codeblockCSS || "bg-surface-2 h-[75vh] w-full border border-rule rounded-xl overflow-hidden"}>
+        <div className={data.codeblockCSS || "bg-surface-2 h-[60vh] md:h-[75vh] w-full border border-rule rounded-xl overflow-hidden"}>
           <Component />
         </div>
       ) : (
-        <div className="bg-surface-2 max-h-[75vh] overflow-y-auto w-full border border-rule rounded-xl" data-lenis-prevent>
+        <div className="bg-surface-2 max-h-[60vh] md:max-h-[75vh] overflow-auto w-full border border-rule rounded-xl" data-lenis-prevent>
           <CodeBlock code={demoCode} language="javascript" />
         </div>
       )}
@@ -125,17 +125,17 @@ function DisplayPage({ data }: DisplayPageProps) {
 
       {/* ── Source Code ───────────────────────────── */}
       <div className="mt-12">
-        <div className="flex items-center justify-between mb-5">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-5">
           <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-mute">Source Code</span>
           <button
             onClick={copyPath}
-            className="flex items-center gap-1.5 text-xs text-ink-mute hover:text-ink font-mono border border-rule rounded-lg px-2.5 py-1 hover:border-ink-mute transition-colors duration-150"
+            className="flex items-center gap-1.5 text-xs text-ink-mute hover:text-ink font-mono border border-rule rounded-lg px-2.5 py-1 hover:border-ink-mute transition-colors duration-150 max-w-full self-start sm:self-auto"
           >
-            {copiedPath ? <MdCheck className="text-emerald-400" /> : <MdContentCopy />}
-            {data.path}
+            {copiedPath ? <MdCheck className="text-emerald-400 shrink-0" /> : <MdContentCopy className="shrink-0" />}
+            <span className="truncate">{data.path}</span>
           </button>
         </div>
-        <div className="max-h-[75vh] overflow-y-auto border border-rule rounded-xl" data-lenis-prevent>
+        <div className="max-h-[60vh] md:max-h-[75vh] overflow-auto border border-rule rounded-xl" data-lenis-prevent>
           <CodeBlock code={code} language="javascript" />
         </div>
       </div>

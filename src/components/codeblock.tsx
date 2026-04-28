@@ -28,11 +28,11 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ code, language }) => {
       >
         {copied ? <MdCheck className="text-emerald-400 text-base" /> : <MdContentCopy className="text-base" />}
       </button>
-      <div className="rounded-lg border border-rule overflow-hidden">
+      <div className="rounded-lg border border-rule overflow-hidden text-xs sm:text-sm">
         <SyntaxHighlighter
           language={language}
           style={vscDarkPlus}
-          customStyle={{ margin: 0, background: 'var(--bg-2)' }}
+          customStyle={{ margin: 0, background: 'var(--bg-2)', fontSize: 'inherit' }}
         >
           {code}
         </SyntaxHighlighter>

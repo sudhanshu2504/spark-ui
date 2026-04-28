@@ -47,8 +47,9 @@ const scale = {
   closed: { scale: 0, transition: { duration: 0.4 } },
 };
 function Curve() {
-  const initialPath = `M100 0 L200 0 L200 ${window.innerHeight} L100 ${window.innerHeight} Q-100 ${window.innerHeight / 2} 100 0`;
-  const targetPath = `M100 0 L200 0 L200 ${window.innerHeight} L100 ${window.innerHeight} Q100 ${window.innerHeight / 2} 100 0`;
+  const h = typeof window !== 'undefined' ? window.innerHeight : 800;
+  const initialPath = `M100 0 L200 0 L200 ${h} L100 ${h} Q-100 ${h / 2} 100 0`;
+  const targetPath = `M100 0 L200 0 L200 ${h} L100 ${h} Q100 ${h / 2} 100 0`;
 
   const curve = {
     initial: {
@@ -123,13 +124,13 @@ export default function CurvedNavbar({ isActive, setIsActive }) {
       initial="initial"
       animate="enter"
       exit="exit"
-      className={`h-screen w-screen max-w-screen-sm fixed right-0 top-0 text-black bg-[rgb(255,224,69)] z-10`}
+      className={`h-screen w-screen max-w-screen-sm fixed right-0 top-0 text-black bg-[rgb(255,224,69)] z-50`}
     >
       <div
         className="w-full flex justify-end text-3xl p-4"
         onClick={() => setIsActive(false)}
       >
-        <IoClose className="text-3xl" />
+        <IoClose className="text-3xl cursor-pointer" />
       </div>
       <div className={`styles.body h-full p-24 flex flex-col justify-between`}>
         <div

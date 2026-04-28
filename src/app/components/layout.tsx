@@ -64,7 +64,7 @@ export default async function Layout({ children }: Readonly<{ children: ReactNod
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 px-6 md:px-10 py-8">
+      <main className="flex-1 min-w-0 px-4 md:px-10 py-6 md:py-8">
         {children}
       </main>
     </div>
