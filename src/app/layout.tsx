@@ -34,17 +34,17 @@ export const metadata: Metadata = {
   description: "Elevate your web projects with SparkUI and create stunning, high-performance websites that stand out in SEO and offer an exceptional user experience",
   keywords: "React, TypeScript, TailwindCSS, SparkUI, Frontend Library, Shadcn, Nextjs, Framer Motion, SEO, Web Development, Web Design, UI/UX, Components, Templates, Open Source, Free, Interfaces, Apple, Premium, Development, Library, Services",
   alternates: {
-    canonical: 'https://www.sparkui.me',
+    canonical: 'https://www.sparkui.site',
   },
   // Open Graph metadata (for Facebook, LinkedIn, etc.)
   openGraph: {
     title: 'SparkUI - Your Ultimate UI Library',
     description: 'Explore SparkUI, a powerful and customizable UI library with a wide range of components for building modern web applications.',
-    url: 'https://www.sparkui.me',
+    url: 'https://www.sparkui.site',
     siteName: 'SparkUI',
     images: [
       {
-        url: 'https://www.sparkui.me/banner.png',
+        url: 'https://www.sparkui.site/banner.png',
         width: 1200,
         height: 630,
         alt: 'SparkUI Preview',
@@ -59,10 +59,10 @@ export const metadata: Metadata = {
     description: 'Discover SparkUI, the customizable UI library with reusable components for modern web design.',
     site: '@knight_s18', 
     creator: '@knight_s18',
-    images: ['https://www.sparkui.me/banner.png'],
+    images: ['https://www.sparkui.site/banner.png'],
   },
   icons: {
-    icon: 'https://sparkui.me/favicon.ico', 
+    icon: '/icon.svg',
   },
 };
 

@@ -4,7 +4,7 @@
 
 **Spark UI** is a modern, open-source component library that helps developers build beautiful, responsive, and accessible web applications faster. Built with React, Tailwind CSS, and Motion (Framer Motion), Spark UI provides ready-to-use, production-ready components with stunning animations and modern design patterns.
 
-🌐 **Visit**: [sparkui.me](https://sparkui.me)
+🌐 **Visit**: [sparkui.site](https://sparkui.site)
 
 ---
 
@@ -73,7 +73,7 @@ Make sure your project has:
 ### Quick Start
 
 1. **Browse Components**  
-   Visit [sparkui.me/components](https://sparkui.me/components) to explore available components
+   Visit [sparkui.site/components](https://sparkui.site/components) to explore available components
 
 2. **Copy the Code**  
    Click on any component to view its code, then copy it to your clipboard
@@ -87,7 +87,7 @@ Make sure your project has:
 ### Example: Adding a Hero Section
 
 ```tsx
-// 1. Visit sparkui.me/components/hero-parallax
+// 1. Visit sparkui.site/components/hero-parallax
 // 2. Copy the component code
 // 3. Create a new file in your project
 
@@ -186,7 +186,7 @@ When submitting a new component:
 - ✅ Include usage documentation and examples
 - ✅ Test in multiple browsers
 
-📖 **Detailed Guidelines**: Visit [sparkui.me/contribute](https://sparkui.me/contribute) for complete contribution documentation.
+📖 **Detailed Guidelines**: Visit [sparkui.site/contribute](https://sparkui.site/contribute) for complete contribution documentation.
 
 ---
 
@@ -205,10 +205,10 @@ When submitting a new component:
 
 ## 📚 Resources
 
-- **[Component Library](https://sparkui.me/components)** - Browse all available components
-- **[Documentation](https://sparkui.me/docs)** - Guides and tutorials
-- **[Contribution Guide](https://sparkui.me/contribute)** - How to contribute
-- **[Custom Components](https://sparkui.me/pricing)** - Request custom components
+- **[Component Library](https://sparkui.site/components)** - Browse all available components
+- **[Documentation](https://sparkui.site/docs)** - Guides and tutorials
+- **[Contribution Guide](https://sparkui.site/contribute)** - How to contribute
+- **[Custom Components](https://sparkui.site/pricing)** - Request custom components
 
 ---
 
@@ -247,7 +247,7 @@ While Spark UI provides amazing components for developers, we also offer **profe
 
 ### 📞 Get in Touch
 
-Ready to bring your vision to life? Visit our **[Custom Development page](https://sparkui.me/pricing)** to learn more about our services and pricing.
+Ready to bring your vision to life? Visit our **[Custom Development page](https://sparkui.site/pricing)** to learn more about our services and pricing.
 
 **Let's build something amazing together!** ✨
 
@@ -263,10 +263,10 @@ You are free to use Spark UI components in personal and commercial projects.
 
 ## 🌐 Links
 
-- **Website**: [sparkui.me](https://sparkui.me)
+- **Website**: [sparkui.site](https://sparkui.site)
 - **GitHub**: [github.com/sudhanshu2504/spark-ui](https://github.com/sudhanshu2504/spark-ui)
-- **Components**: [sparkui.me/components](https://sparkui.me/components)
-- **Contribute**: [sparkui.me/contribute](https://sparkui.me/contribute)
+- **Components**: [sparkui.site/components](https://sparkui.site/components)
+- **Contribute**: [sparkui.site/contribute](https://sparkui.site/contribute)
 
 ---
 
