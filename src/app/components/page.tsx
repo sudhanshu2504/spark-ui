@@ -1,40 +1,51 @@
-import React from 'react'
-import components from '@/content/components';
+import React from 'react';
 import { getComponents } from '@/lib/fetchCMSData';
 import { Component } from '@/types/components';
 import Card from '@/components/ui/components_card';
 
-async function page() {
-  const components: Component[] = await getComponents('name,slug,thumbnailURL,description');
-  
+interface CMSComponent extends Component {
+  thumbnailURL?: string;
+  description?: string;
+}
+
+async function ComponentsPage() {
+  const components: CMSComponent[] = await getComponents('name,slug,thumbnailURL,description,isNewComponent');
+
   if (!components || components.length === 0) {
     return (
-      <div className='text-white text-center p-10'>
-        <h1>No components found</h1>
-        <p>Check the console for errors</p>
+      <div className="text-center py-20">
+        <h1 className="text-ink text-xl font-semibold mb-2">No components found</h1>
+        <p className="text-ink-mute text-sm">Check the console for errors</p>
       </div>
     );
   }
-  
+
   return (
-    <div className='text-white flex flex-row flex-wrap items-start justify-center w-full gap-y-8 gap-x-2 h-auto'>
-      {components.map((component, index) => {
-        return (
-            <Card key={component.slug || index} {...component}/>
-        )
-      })}
-      <div className='flex flex-col gap-1 w-[450px] max-w-full cursor-pointer'>
-      <div className='w-full h-auto overflow-hidden rounded-md border border-gray-500 border-opacity-50'>
-       <img src={`./assests/components_preview/coming_soon.png`} alt="SparkUI" className='h-full w-full duration-300 hover:scale-105' />
+    <div className="w-full">
+      {/* Page header */}
+      <div className="mb-10">
+        <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-mute block mb-2">Library</span>
+        <h1 className="font-sans font-bold text-ink text-3xl md:text-4xl mb-2">
+          All Components
+        </h1>
+        <p className="text-ink-soft text-sm md:text-base max-w-lg">
+          {components.length || 'Several'} hand-crafted, copy-paste components built with React, Tailwind, and Motion.
+        </p>
       </div>
-        <h1 className='font-primary font-medium text-lg'>Coming Soon...</h1>
-        <p className='font-normal text-sm'></p>
+
+      {/* Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+        {components.map((component, index) => (
+          <Card key={component.slug || index} {...component} />
+        ))}
+        {/* Coming soon tile */}
+        <div className="flex flex-col items-center justify-center border-2 border-dashed border-ink-mute/30 rounded-2xl min-h-[260px] hover:border-ink-mute/50 transition-colors duration-200">
+          <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-mute mb-1">More dropping</span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-mute">weekly &rarr;</span>
+        </div>
+      </div>
     </div>
-    </div>
-  )
+  );
 }
 
-export default page
-
-
-
+export default ComponentsPage;

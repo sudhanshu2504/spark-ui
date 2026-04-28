@@ -5,4 +5,4 @@ Disallow: /404
 Disallow: /500
 
 # Sitemap
-Sitemap: https://sparkui.me/sitemap.xml
+Sitemap: https://www.sparkui.site/sitemap.xml

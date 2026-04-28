@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useSpring, MotionValue } from "motion/react";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import Marquee from "@/components/ui/marquee";
 
 export default function HeroParallaxSection({
@@ -20,9 +20,15 @@ export default function HeroParallaxSection({
 }) {
   const firstRow = components.slice(0, 3);
   const secondRow = components.slice(3, 6);
-  const ref = React.useRef(null);
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: mounted ? ref : undefined,
     offset: ["start start", "end start"],
   });
 
@@ -37,7 +43,7 @@ export default function HeroParallaxSection({
   return (
     <div
       ref={ref}
-      className="h-auto w-full pb-20 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-auto w-full pb-20 overflow-hidden antialiased relative z-0 flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       {ContentComponent}
       <motion.div
@@ -48,40 +54,45 @@ export default function HeroParallaxSection({
           opacity,
         }}
       >
-        <motion.h1
-          className="md:text-5xl text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-100 to-gray-500 text-center mb-6"
-          style={{ opacity: textOpacity }}
-        >
-          {data?.content?.parallexSection?.title || "Our Components"}
-        </motion.h1>
+        <motion.div className="text-center mb-6" style={{ opacity: textOpacity }}>
+          <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft block mb-3">Components</span>
+          <h2 className="md:text-5xl text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-ink to-ink-mute">
+            {data?.content?.parallexSection?.title || "Our Components"}
+          </h2>
+        </motion.div>
         <motion.div className="h-[300px] w-[150%] -translate-x-[25%] flex flex-row space-x-20">
           <Marquee pauseOnHover className="[--duration:25s] antialiased h-[450px] w-full">
             {firstRow.map((component) => (
               <Link href={`/components/${component.link}`} key={component.name}>
-                <div className="flex flex-col max-w-[380px] gap-2 h-1/2 border border-gray-500/50 rounded-md ">
+                <div className="flex flex-col max-w-[380px] gap-2 h-1/2 border border-rule rounded-md ">
                   <img
                     src={`/assests/components_preview/${component.img}`}
                     alt={component.name}
                     className="h-full w-full object-contain object-center"
                   />
                 </div>
-                <h3 className="text-white">{component.name}</h3>
+                <h3 className="text-ink">{component.name}</h3>
               </Link>
             ))}
+            <div className="flex flex-col items-center justify-center max-w-[380px] h-1/2 border-2 border-dashed border-ink-mute rounded-md px-8">
+              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-mute whitespace-nowrap">
+                More dropping weekly &rarr;
+              </span>
+            </div>
           </Marquee>
         </motion.div>
         <motion.div className="h-[300px] w-[150%] -translate-x-[25%] flex flex-row space-x-20">
           <Marquee pauseOnHover reverse className="[--duration:25s] antialiased h-[450px] w-full">
             {secondRow.map((component) => (
               <Link href={`/components/${component.link}`} key={component.name}>
-                <div className="flex flex-col max-w-[380px] gap-2 h-1/2 border border-gray-500/50 rounded-md ">
+                <div className="flex flex-col max-w-[380px] gap-2 h-1/2 border border-rule rounded-md ">
                   <img
                     src={`/assests/components_preview/${component.img}`}
                     alt={component.name}
                     className="h-full w-full object-contain object-center"
                   />
                 </div>
-                <h3 className="text-white">{component.name}</h3>
+                <h3 className="text-ink">{component.name}</h3>
               </Link>
             ))}
           </Marquee>

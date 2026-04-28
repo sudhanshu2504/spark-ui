@@ -15,6 +15,29 @@ const config = {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: ['var(--font-inter-tight)', 'system-ui', 'sans-serif'],
+  			display: ['var(--font-instrument-serif)', 'serif'],
+  			mono: ['var(--font-jetbrains-mono)', 'monospace'],
+  		},
+  		colors: {
+  			'surface': {
+  				DEFAULT: 'var(--bg)',
+  				2: 'var(--bg-2)',
+  				3: 'var(--bg-3)',
+  			},
+  			ink: {
+  				DEFAULT: 'var(--ink)',
+  				soft: 'var(--ink-soft)',
+  				mute: 'var(--ink-mute)',
+  			},
+  			rule: 'var(--rule)',
+  			accent: {
+  				DEFAULT: 'var(--accent)',
+  				2: 'var(--accent-2)',
+  				3: 'var(--accent-3)',
+  			},
+  		},
   		animation: {
   			spotlight: 'spotlight 2s ease .75s 1 forwards',
   			marquee: 'marquee var(--duration) linear infinite',

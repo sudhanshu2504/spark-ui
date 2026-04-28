@@ -1,30 +1,53 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { SiSparkar } from "react-icons/si";
+import Logo from '@/components/logo';
 
-const Card = (component: any) => {
-  const [isHovered, setIsHovered] = React.useState(false);
-  
+interface CardProps {
+  slug: string;
+  name: string;
+  description?: string;
+  thumbnailURL?: string;
+  isNewComponent?: boolean;
+}
+
+const Card = ({ slug, name, description, thumbnailURL, isNewComponent }: CardProps) => {
   return (
-    <Link 
-      href={`/components/${component.slug}`}
-      className='flex flex-col gap-[1px] w-[450px] max-w-full cursor-pointer no-underline' 
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <Link
+      href={`/components/${slug}`}
+      className="group bg-surface-2 border border-rule rounded-2xl overflow-hidden hover:border-accent/40 hover:-translate-y-0.5 transition-all duration-200 block no-underline"
     >
-      <div className='w-full h-auto overflow-hidden rounded-md border border-gray-500 border-opacity-50'>
-       {(component.thumbnailURL)?(<img src={`${component.thumbnailURL}`} alt="SparkUI" className='h-full w-full duration-300 hover:scale-105'/>):
-      (<div className='h-300px w-full duration-300 hover:scale-110'> <SiSparkar/> </div>)}
+      {/* Thumbnail */}
+      <div className="h-[180px] overflow-hidden border-b border-rule bg-surface-3 flex items-center justify-center">
+        {thumbnailURL ? (
+          <img
+            src={thumbnailURL}
+            alt={name}
+            className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-300"
+          />
+        ) : (
+          <Logo size="xl" />
+        )}
       </div>
-      <h1 className='font-primary font-medium text-lg text-white'>{component.name}</h1>
-      <p className={`font-normal text-sm transition-colors ${
-        isHovered ? "text-gray-300" : "text-gray-500"
-      }`}>
-        {component.description}
-      </p>
+
+      {/* Info */}
+      <div className="px-4 py-3">
+        <div className="flex items-center justify-between mb-1">
+          <span className="font-sans font-medium text-sm text-ink">{name}</span>
+          {isNewComponent && (
+            <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-400 border border-emerald-400/30 bg-emerald-400/10 rounded px-1.5 py-0.5">
+              new
+            </span>
+          )}
+        </div>
+        {description && (
+          <p className="text-xs text-ink-mute line-clamp-2 leading-relaxed">
+            {description}
+          </p>
+        )}
+      </div>
     </Link>
-  )
+  );
 };
 
 export default Card;

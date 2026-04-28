@@ -7,54 +7,70 @@ import { getHomePageData } from '@/lib/fetchCMSData';
 import HeroParallaxSection from "@/components/home/HeroParallaxSection";
 import Marquee from "@/components/ui/marquee";
 import { TbComponents } from "react-icons/tb";
+import { AnimatedSection, StaggerGrid, StaggerItem, GlowOrb } from "@/components/home/AnimatedSection";
 
 const Content = ({ data }: { data: any }) => {
-  // Extracting data dynamically from CMS
   const heroBlock = data?.content?.hero || {};
   const heroMetadata = heroBlock.metadata || {};
-  
+  const buttons = heroMetadata.buttons?.length
+    ? heroMetadata.buttons
+    : [
+        { label: "Browse Components \u2192", link: "/components", style: "primary" },
+        { label: "GitHub", link: "https://github.com/sudhanshu2504/spark-ui", style: "ghost" },
+      ];
+
   return (
-    <main className="min-h-[90vh] flex flex-col md:flex-row gap-3 justify-evenly items-center container mx-auto z-[1]">
-      <div className="">
-        <Logo />
-      </div>
-      <div className="flex flex-col">
-        <div className="flex flex-col gap-y-6">
-          <HoverBorderGradient
-            containerClassName="rounded-full border-gray-600 border-opacity-35 mx-auto"
-            as="button"
-            className="bg-black flex items-center text-sm"
+    <main className="min-h-[90vh] flex flex-col gap-6 justify-center items-center container mx-auto z-[1] py-16">
+      {/* Pill */}
+      <HoverBorderGradient
+        containerClassName="rounded-full border-rule mx-auto"
+        as="button"
+        className="bg-surface flex items-center gap-2 text-xs"
+      >
+        <Logo size="xs" />
+        <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft">Introducing SparkUI</span>
+      </HoverBorderGradient>
+
+      {/* Headline */}
+      <h1 className="font-sans font-bold text-ink text-center max-w-4xl px-4 leading-[0.95] tracking-tight"
+          style={{ fontSize: 'clamp(40px, 7vw, 96px)' }}>
+        Build with{' '}
+        <span className="font-display italic font-normal text-accent">Spark</span>.{' '}
+        Ship with{' '}
+        <span className="font-display italic font-normal text-accent">Style</span>.
+      </h1>
+
+      {/* Sub-headline */}
+      <p className="text-ink-soft text-center text-base md:text-lg max-w-xl px-4">
+        {components.length} hand-crafted components. Free forever. New ones drop weekly.
+      </p>
+
+      {/* CTAs */}
+      <div className="flex flex-row flex-wrap justify-center items-center gap-4 mt-4">
+        {buttons.map((btn: any, idx: number) => (
+          <Link
+            key={idx}
+            href={btn.link}
+            className={
+              btn.style === 'primary'
+                ? 'inline-flex items-center text-[#0a0a0a] text-sm font-semibold rounded-lg bg-accent px-6 py-3 hover:bg-accent-2 transition-all duration-150 ease-out hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(245,166,35,0.25)] focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-surface'
+                : 'inline-flex items-center text-ink-soft text-sm font-medium rounded-lg border border-rule/60 bg-surface-2/50 backdrop-blur-sm px-6 py-3 hover:text-ink hover:border-ink-mute hover:bg-surface-2 transition-all duration-150 ease-out'
+            }
           >
-            <span className="bg-clip-text mx-2 z-0 bg-gradient-to-br to-[rgb(255,255,255,0.18)] from-[rgb(255,255,255,0.38)]">{heroMetadata.badge || heroBlock.title || "Introducing SparkUI"}</span>
-          </HoverBorderGradient>
-          <h1 
-            className="font-black md:text-4xl text-base text-center text-white text-wrap max-w-screen-md px-4" 
-            dangerouslySetInnerHTML={{ __html: heroBlock.description || "Transform your web projects into Spark, the next-generation UI Library designed for seamless, dynamic, and stunning user interfaces." }} 
-          />
-        </div>
-        <div className="flex flex-col lg:my-10 my-4 gap-y-4">
-          <div className="flex flex-row flex-wrap justify-center items-center gap-2 ">
-            {/* Map buttons from CMS if available, otherwise fallback to mock data */}
-            {(heroMetadata.buttons || []).map((btn: any, idx: number) => (
-              <Link 
-                key={idx} 
-                href={btn.link} 
-                className={btn.style === 'primary' ? 'text-black text-sm md:text-lg rounded-lg bg-white px-4 py-2 md:px-6 md:py-3' : 'text-white text-sm md:text-lg border border-white rounded-lg px-4 py-2 md:px-6 md:py-3'}
-              >
-                {btn.label}
-              </Link>
-            ))}
-          </div>
-          <div className="flex flex-row justify-center flex-wrap gap-2 my-2 lg:my-10">
-            {/* Map techStack from CMS if available, otherwise fallback to mock data */}
-            {(heroMetadata.techStack || [])?.map((tech: any, idx: number) => (
-              <div key={idx} className="flex items-center gap-1 md:gap-2">
-                <div dangerouslySetInnerHTML={{ __html: tech.iconSvg }} />
-                <h3 className="font-bold text-gray-400">{tech.name}</h3>
-              </div>
-            ))}
-          </div>
-        </div>
+            {btn.label}
+          </Link>
+        ))}
+      </div>
+
+      {/* Tech row */}
+      <div className="flex flex-row justify-center items-center gap-1 mt-4 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-mute">
+        <span>Built with</span>
+        <span className="mx-1">&middot;</span>
+        <span>React</span>
+        <span className="mx-1">&middot;</span>
+        <span>Tailwind</span>
+        <span className="mx-1">&middot;</span>
+        <span>Motion</span>
       </div>
     </main>
   )
@@ -63,17 +79,17 @@ const Content = ({ data }: { data: any }) => {
 const OurComponents = () => {
   return (
     <div className="flex flex-col gap-4">
-      <h1 className={`md:text-5xl text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-100 to-gray-500 text-center mb-6`}>Our Components</h1>
+      <h1 className={`md:text-5xl text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-ink to-ink-mute text-center mb-6`}>Our Components</h1>
       <div className="flex flex-row flex-wrap gap-4">
         <Marquee className="[--duration:35s] antialiased h-[500px]">
           {components.map((component) => (
-            <div key={component.name} className="flex flex-col gap-2 h-1/2 w-1/2 border border-gray-500/50 rounded-md ">
+            <div key={component.name} className="flex flex-col gap-2 h-1/2 w-1/2 border border-rule rounded-md ">
               <img
                 src={`/assests/components_preview/${component.img}`}
                 alt={component.name}
                 className="h-full w-full object-cover object-center"
               />
-              <h3 className="text-white">{component.name}</h3>
+              <h3 className="text-ink">{component.name}</h3>
             </div>
           ))}
         </Marquee>
@@ -88,93 +104,167 @@ const Features = ({ data }: { data: any }) => {
   const featureList = featuresBlock.metadata?.features || [];
 
   return (
-    <section className="w-full py-20 md:py-24 lg:py-32">
-      <div className="container mx-auto grid gap-8 px-4 md:px-6 lg:grid-cols-2 lg:gap-16">
-        <div className="space-y-4">
-          <div className="inline-block rounded-lg bg-white px-3 py-1 text-sm text-black">
-            Features
-          </div>
-          <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl uppercase font-primary text-yellow-400">{featuresBlock.title || "Feel the Spark"}</h2>
-          <p className="text-gray-200 md:text-xl">
+    <section className="w-full py-20 md:py-24 lg:py-32 relative overflow-hidden">
+      <GlowOrb className="w-[500px] h-[500px] -left-48 top-1/2 -translate-y-1/2 bg-accent/10 blur-[120px]" />
+      <div className="container mx-auto grid gap-8 px-4 md:px-6 lg:grid-cols-2 lg:gap-16 relative z-10">
+        <AnimatedSection className="space-y-4">
+          <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft">Features</span>
+          <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl font-sans text-accent">{featuresBlock.title || "Feel the Spark"}</h2>
+          <p className="text-ink-soft md:text-xl">
             {featuresBlock.description || "SparkUI offers a comprehensive suite of customizable components to elevate your web applications. From sleek UI elements to advanced interactive features, SparkUI has everything you need to create stunning user experiences."}
           </p>
-        </div>
-        <div className="grid gap-6">
+        </AnimatedSection>
+        <StaggerGrid className="grid gap-6">
           {featureList.length > 0 ? featureList.map((feature: any, idx: number) => (
-            <div key={idx} className="grid grid-cols-[auto_1fr] items-center gap-4">
-              <div className="rounded-full p-2 text-white">
-                <TbComponents className="h-6 w-6" />
+            <StaggerItem key={idx}>
+              <div className="grid grid-cols-[auto_1fr] items-center gap-4">
+                <div className="rounded-full p-2 text-ink">
+                  <TbComponents className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-xl text-accent font-bold">{feature.title}</h3>
+                  <p className="text-ink-soft">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl text-yellow-400 font-bold">{feature.title}</h3>
-                <p className="text-gray-300">
-                  {feature.description}
-                </p>
-              </div>
-            </div>
+            </StaggerItem>
           )) : null}
-        </div>
+        </StaggerGrid>
       </div>
     </section>
   );
 }
-const TryItNow = ({ data }: { data: any }) => {
-  const ctaBlock = data?.content?.tryItNow || {};
-  const ctaButton = ctaBlock.metadata?.button || { label: "Try It Now", link: "/components" };
+/* ── Pick · Copy · Paste ─────────────────────────────── */
+const steps = [
+  { num: '01', title: 'Pick a component', body: 'Browse the collection. Hover for a live preview.' },
+  { num: '02', title: 'Copy the source', body: 'One click. JSX + Tailwind classes — no npm install.' },
+  { num: '03', title: 'Paste into your project', body: 'It works. Tweak the source to make it yours.' },
+];
 
-  return (
-    <section className="py-60 md:py-40 bg-yellow-400 px-4 md:px-8 lg:px-12">
-      <div className="max-w-3xl mx-auto text-center space-y-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-black">{ctaBlock.title || "Unlock the Spark of Premium UI"}</h2>
-        <p className="text-black/75">
-          {ctaBlock.description || "Our library of high-quality components is designed to help you build stunning and responsive web applications with ease."}
-        </p>
-        <div className="flex justify-center gap-4">
-          <Link
-            href={ctaButton.link || "/components"}
-            className="inline-flex items-center justify-center rounded-md bg-gray-800 px-4 py-2 text-sm md:text-base font-medium text-yellow-400 shadow-sm transition-colors hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-[#1e293b]"
-            prefetch={false}
-          >
-            {ctaButton.label || "Try It Now"}
-          </Link>
+const HowItWorks = () => (
+  <section className="py-20 md:py-28 relative overflow-hidden">
+    <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <AnimatedSection className="text-center mb-12">
+        <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft block mb-3">How it works</span>
+        <h2 className="font-sans font-bold text-ink text-3xl md:text-4xl">
+          Pick. Copy.{' '}
+          <span className="font-display italic font-normal text-accent">Paste.</span>
+        </h2>
+      </AnimatedSection>
+      <StaggerGrid className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {steps.map((s) => (
+          <StaggerItem key={s.num}>
+            <div className="bg-surface-2 border border-rule rounded-2xl p-7 group hover:border-accent/40 hover:-translate-y-0.5 transition-all duration-200 h-full">
+              <span className="font-mono text-sm text-accent mb-5 block">{s.num}</span>
+              <h3 className="font-sans font-semibold text-ink text-lg mb-2">{s.title}</h3>
+              <p className="text-ink-soft text-sm leading-relaxed">{s.body}</p>
+            </div>
+          </StaggerItem>
+        ))}
+      </StaggerGrid>
+    </div>
+  </section>
+);
+
+/* ── Component Showcase Grid ─────────────────────────── */
+const ComponentGrid = () => (
+  <section className="py-20 md:py-28 relative overflow-hidden">
+    <GlowOrb className="w-[600px] h-[600px] -right-64 top-0 bg-accent/8 blur-[140px]" />
+    <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <AnimatedSection className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div>
+          <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft block mb-3">Available now</span>
+          <h2 className="font-sans font-bold text-ink text-3xl md:text-4xl">
+            {components.length} components,{' '}
+            <span className="font-display italic font-normal text-accent">free.</span>
+          </h2>
+        </div>
+        <span className="text-ink-soft text-sm">+ more dropping weekly</span>
+      </AnimatedSection>
+      <StaggerGrid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {components.map((c) => (
+          <StaggerItem key={c.name}>
+            <Link
+              href={`/components/${c.link}`}
+              className="group bg-surface-2 border border-rule rounded-2xl overflow-hidden hover:border-accent/40 hover:-translate-y-0.5 transition-all duration-200 block"
+            >
+              <div className="h-[180px] overflow-hidden border-b border-rule bg-surface-3 flex items-center justify-center">
+                <img
+                  src={`/assests/components_preview/${c.img}`}
+                  alt={c.name}
+                  className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-300"
+                />
+              </div>
+              <div className="flex items-center justify-between px-4 py-3">
+                <span className="font-sans font-medium text-sm text-ink">{c.name}</span>
+                {(c as any).latest && (
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-400 border border-emerald-400/30 bg-emerald-400/10 rounded px-1.5 py-0.5">new</span>
+                )}
+              </div>
+            </Link>
+          </StaggerItem>
+        ))}
+        <StaggerItem>
+          <div className="flex flex-col items-center justify-center border-2 border-dashed border-ink-mute/40 rounded-2xl min-h-[240px] hover:border-ink-mute transition-colors duration-200">
+            <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-mute mb-2">More dropping</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-mute">weekly &rarr;</span>
+          </div>
+        </StaggerItem>
+      </StaggerGrid>
+    </div>
+  </section>
+);
+
+/* ── Bottom CTA Strip ────────────────────────────────── */
+const BottomCTA = () => (
+  <section className="py-20 md:py-28">
+    <AnimatedSection className="container mx-auto px-4 md:px-6">
+      <div
+        className="bg-surface-2 border border-rule rounded-2xl p-10 md:p-16 text-center relative overflow-hidden"
+        style={{
+          background: 'radial-gradient(circle at 50% 0%, rgba(245,166,35,0.12), transparent 60%), var(--bg-2)',
+        }}
+      >
+        <GlowOrb className="w-[400px] h-[400px] left-1/2 -translate-x-1/2 -top-48 bg-accent/15 blur-[100px]" />
+        <div className="relative z-10">
+          <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-accent block mb-4">Open source</span>
+          <h2 className="font-sans font-bold text-ink text-3xl md:text-4xl mb-4 max-w-lg mx-auto">
+            Ready to build something{' '}
+            <span className="font-display italic font-normal text-accent">beautiful</span>?
+          </h2>
+          <p className="text-ink-soft text-base mb-8 max-w-md mx-auto">
+            Every component is free, copy-pasteable, and built with React + Tailwind + Framer Motion.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/components"
+              className="inline-flex items-center text-[#0a0a0a] text-sm font-semibold rounded-lg bg-accent px-6 py-3 hover:bg-accent-2 transition-all duration-150 ease-out hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(245,166,35,0.25)]"
+            >
+              Browse Components &rarr;
+            </Link>
+            <Link
+              href="https://github.com/sudhanshu2504/spark-ui"
+              className="inline-flex items-center text-ink-soft text-sm font-medium rounded-lg border border-rule/60 bg-surface/50 backdrop-blur-sm px-6 py-3 hover:text-ink hover:border-ink-mute transition-all duration-150 ease-out"
+            >
+              Star on GitHub
+            </Link>
+          </div>
         </div>
       </div>
-    </section>
-  )
-}
-const Contribute = ({ data }: { data: any }) => {
-  const joinBlock = data?.content?.contribute || {};
-  const joinButton = joinBlock.metadata?.button || { label: "Contribute Now", link: "/contribute" };
-
-  return (
-    <section className="py-60 md:py-40 px-4 md:px-8 lg:px-12">
-      <div className="max-w-3xl mx-auto text-center space-y-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-white">{joinBlock.title || "Looking forward to contribute as an Developer?"}</h2>
-        <p className="text-gray-400">
-          {joinBlock.description || "Expand your network and contribute to the open-source community by becoming a SparkUI contributor."}
-        </p>
-        <div className="flex justify-center gap-4">
-          <Link
-            href={joinButton.link || "/contribute"}
-            className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2 text-base font-medium text-black shadow-sm transition-colors hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-[#1e293b]"
-            prefetch={false}
-          >
-            {joinButton.label || "Contribute Now"}
-          </Link>
-        </div>
-      </div>
-    </section>
-  )
-}
+    </AnimatedSection>
+  </section>
+);
 export default async function Home() {
   const data = await getHomePageData() || {};
 
   return (
     <>
       <HeroParallaxSection components={components} data={data} ContentComponent={<Content data={data} />} />
+      <HowItWorks />
       <Features data={data} />
-      <TryItNow data={data} />
-      <Contribute data={data} />
+      <ComponentGrid />
+      <BottomCTA />
     </>
   );
 }
