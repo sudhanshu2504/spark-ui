@@ -1,9 +1,33 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Inter_Tight, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import {HeroUIProvider} from "@heroui/react";
 import Navigation from "../components/navbar";
 import Footer from "../components/footer";
 import { Analytics } from "@vercel/analytics/react";
+import { getComponents } from "@/lib/fetchCMSData";
+
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter-tight",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "SparkUI | Frontend Library",
@@ -42,13 +66,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
+export default async function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
+  const cmsComponents = await getComponents('name,slug,thumbnailURL,description');
+
   return (
-    <html lang="en" className="bg-black">
+    <html lang="en" className={`bg-surface ${interTight.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}>
       <body>
         <Analytics/>
         <HeroUIProvider>
-          <Navigation/>
+          <Navigation components={cmsComponents} />
           <div className="min-h-screen">
             {children}
           </div>

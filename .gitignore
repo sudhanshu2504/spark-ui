@@ -11,6 +11,10 @@
 /coverage
 /src/app/playground
 /src/app/playground2
+/docs
+
+#claude
+/.claude
 
 # next.js
 /.next/

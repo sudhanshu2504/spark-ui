@@ -1,60 +1,193 @@
 'use client'
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion } from 'motion/react';
-import { useInView } from 'react-intersection-observer';
+import { motion, AnimatePresence } from 'motion/react';
 import { FaBarsStaggered } from "react-icons/fa6";
-import { IoClose } from "react-icons/io5";
-import { SiSparkar } from "react-icons/si";
+import { IoClose, IoSearch } from "react-icons/io5";
+import { FaGithub } from "react-icons/fa6";
+import Logo from "@/components/logo";
+import Search from "@/components/search";
 
-export default function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const animation = {
-    initial: {y: "100%"},
-    enter: (i: number) => ({y: "0", transition: {duration: 1, ease: [0.33, 1, 0.68, 1] as const,  delay: 0.075 * i}})
-  }
+export interface SearchableComponent {
+  name: string;
+  slug: string;
+  thumbnailURL?: string;
+  description?: string;
+}
 
-  const { ref, inView, entry } = useInView({
-    threshold: 0.25
-  });
+const navLinks = [
+  { label: 'Components', href: '/components' },
+  { label: 'Docs', href: '/docs/install-nextjs' },
+];
 
-  return (<>
-  <div className="sticky top-0 h-16 flex justify-center items-center text-white bg-black z-[5]">
-    <a href="/" className="w-2/5 font-black text-xl flex items-center">
-      <SiSparkar className="text-2xl mr-2"/> Spark<span className="text-yellow-400 font-black">UI</span>
-    </a>
-    <div className="w-2/5 flex justify-end">
-      <FaBarsStaggered className="text-xl cursor-pointer" onClick={()=>setIsMenuOpen(true)}/>
-    </div>
-  </div>
-  {<div ref={ref} className={`${(isMenuOpen)?'translate-y-0 delay-200':"-translate-y-full delay-0"}  duration-500 transition-transform h-screen w-screen bg-code fixed z-50 top-0`}>
-    <div className="container mx-auto h-4/5">
-      <div className="h-full">
-          <div className="w-[85%] mx-auto">
-            <button className="w-full flex justify-end font-black font-primary text-4xl mt-5 text-white" onClick={()=>setIsMenuOpen(false)}><IoClose/></button>
-          </div>
-          <div className="h-full w-full flex flex-col justify-around items-center">
-            <div className="overflow-hidden">
-              <motion.p variants={animation} custom={0} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><Link href="/" onClick={()=>setIsMenuOpen(false)}>Home</Link></motion.p>
+export default function Navigation({ components = [] }: { components?: SearchableComponent[] }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Ctrl+K / Cmd+K to open search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchOpen(true);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isMenuOpen]);
+
+  return (
+    <>
+      {/* ── Main Nav Bar ─────────────────────────────── */}
+      <nav
+        className={`sticky top-0 z-[50] h-16 flex items-center justify-between px-6 md:px-10 transition-all duration-300 ${
+          scrolled
+            ? 'bg-surface/80 backdrop-blur-xl border-b border-rule'
+            : 'bg-transparent border-b border-transparent'
+        }`}
+      >
+        {/* Left: Logo */}
+        <Link href="/" className="flex items-center shrink-0">
+          <Logo size="lg" showWordmark />
+        </Link>
+
+        {/* Center: Desktop links */}
+        <div className="hidden md:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-ink-soft text-sm font-medium px-3 py-1.5 rounded-lg hover:text-ink hover:bg-surface-2 transition-colors duration-150"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <a
+            href="https://github.com/sudhanshu2504/spark-ui"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-ink-soft text-sm font-medium px-3 py-1.5 rounded-lg hover:text-ink hover:bg-surface-2 transition-colors duration-150 inline-flex items-center gap-1.5"
+          >
+            <FaGithub className="text-base" />
+            GitHub
+          </a>
+        </div>
+
+        {/* Right: Search + hamburger */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setIsSearchOpen(true)}
+            className="hidden md:inline-flex items-center gap-2 text-ink-soft text-sm rounded-lg border border-rule bg-surface-2/60 px-3 py-1.5 hover:text-ink hover:border-ink-mute hover:bg-surface-2 transition-colors duration-150"
+            aria-label="Search components"
+          >
+            <IoSearch className="text-base" />
+            <span className="text-xs font-medium">Search</span>
+            <kbd className="text-[10px] font-mono text-ink-soft border border-rule rounded px-1.5 py-0.5 ml-1">⌘ K</kbd>
+          </button>
+          <button
+            className="md:hidden flex items-center gap-2 text-ink"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Open menu"
+          >
+            <IoSearch className="text-lg" onClick={(e) => { e.stopPropagation(); setIsSearchOpen(true); }} />
+            <FaBarsStaggered className="text-xl" />
+          </button>
+        </div>
+      </nav>
+
+      {/* ── Mobile Menu ──────────────────────────────── */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <>
+            {/* Amber flash layer */}
+            <motion.div
+              className="fixed inset-0 bg-accent z-[59]"
+              initial={{ y: '-100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '-100%', transition: { delay: 0.15 } }}
+              transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
+            />
+
+            {/* Menu panel */}
+            <motion.div
+              className="fixed inset-0 bg-surface-2 z-[60] flex flex-col"
+              initial={{ y: '-100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '-100%' }}
+              transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0.05 }}
+            >
+              {/* Top bar */}
+              <div className="h-16 flex items-center justify-between px-6">
+                <Logo size="lg" showWordmark />
+                <button
+                  className="text-ink text-3xl p-1"
+                  onClick={() => setIsMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <IoClose />
+                </button>
               </div>
-            <div className="overflow-hidden">
-              <motion.p variants={animation} custom={1} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><Link href="/about" onClick={()=>setIsMenuOpen(false)}>About</Link></motion.p>
+
+              {/* Links */}
+              <div className="flex-1 flex flex-col justify-center items-center gap-8">
+                {[
+                  { label: 'Home', href: '/' },
+                  ...navLinks,
+                  { label: 'GitHub', href: 'https://github.com/sudhanshu2504/spark-ui' },
+                ].map((link, i) => (
+                  <div key={link.href} className="overflow-hidden">
+                    <motion.div
+                      initial={{ y: '100%' }}
+                      animate={{ y: 0 }}
+                      transition={{
+                        duration: 0.8,
+                        ease: [0.33, 1, 0.68, 1],
+                        delay: 0.1 + i * 0.06,
+                      }}
+                    >
+                      <Link
+                        href={link.href}
+                        className="text-ink hover:text-accent text-3xl font-medium transition-colors duration-150"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    </motion.div>
+                  </div>
+                ))}
               </div>
-            <div className="overflow-hidden">
-              <motion.p variants={animation} custom={2} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><Link href="/components" onClick={()=>setIsMenuOpen(false)}>Components</Link></motion.p>
+
+              {/* Bottom CTA */}
+              <div className="px-6 pb-10">
+                <Link
+                  href="/components"
+                  className="flex items-center justify-center w-full text-[#0a0a0a] text-base font-semibold rounded-xl bg-accent py-4 hover:bg-accent-2 transition-colors duration-150"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Browse Components &rarr;
+                </Link>
               </div>
-            <div className="overflow-hidden">
-              <motion.p variants={animation} custom={3} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><Link href="/pricing" onClick={()=>setIsMenuOpen(false)}>Pricing</Link></motion.p>
-            </div>
-            <div className="overflow-hidden">
-              <motion.p variants={animation} custom={4} initial="initial" animate={inView ? "enter" : ""} className="m-0 text-white hover:text-yellow-400 text-3xl"><Link href="/contribute" onClick={()=>setIsMenuOpen(false)}>Contribute</Link></motion.p>
-            </div>
-          </div>
-      </div>
-    </div>
-  </div>}
-  {<div className={`${(isMenuOpen)?'translate-y-0':"-translate-y-full delay-200"} duration-500 transition-transform h-screen w-screen bg-yellow-500 fixed z-[49] top-0`}>
-    </div>}
-  </>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Search Modal */}
+      <Search open={isSearchOpen} onClose={() => setIsSearchOpen(false)} components={components} />
+    </>
   );
 }

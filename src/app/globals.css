@@ -2,26 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: 'primary';
-    src: url(../fonts/primary.ttf) format('truetype');
-}
-@font-face {
-    font-family: 'secondary';
-    src: url(../fonts/secondary.ttf) format('truetype');
+:root {
+  --bg: #050505;
+  --bg-2: #0e0e10;
+  --bg-3: #18181b;
+  --ink: #f5f3ee;
+  --ink-soft: #a3a09a;
+  --ink-mute: #55534e;
+  --rule: #26262a;
+  --accent: #f5a623;
+  --accent-2: #ffce5c;
+  --accent-3: #ff7849;
 }
 
 body{
-    font-family: secondary ;
+    font-family: var(--font-inter-tight), system-ui, sans-serif;
 }
+/* Backward-compatible aliases for files still using the old font classes */
 .font-primary{
-    font-family: primary !important;
+    font-family: var(--font-inter-tight), system-ui, sans-serif !important;
 }
 .font-secondary{
-    font-family: secondary !important;
+    font-family: var(--font-inter-tight), system-ui, sans-serif !important;
+}
+/* New font utility for display italic accents */
+.font-display{
+    font-family: var(--font-instrument-serif), serif;
 }
 .bg-code{
-    background-color: #0f0f0f;
+    background-color: var(--bg-2);
 }
 /* For Webkit Browsers (Chrome, Safari) */
 ::-webkit-scrollbar {
@@ -30,23 +39,23 @@ body{
   }
   
   ::-webkit-scrollbar-track {
-    background: #2c2c2c; /* Background of the scrollbar track */
+    background: var(--bg-3);
   }
-  
+
   ::-webkit-scrollbar-thumb {
-    background-color: #5a5a5a; /* Color of the scrollbar thumb */
-    border-radius: 10px; /* Roundness of the scrollbar thumb */
-    border: 2px solid #2c2c2c; /* Optional: Add border to thumb */
+    background-color: var(--ink-mute);
+    border-radius: 10px;
+    border: 2px solid var(--bg-3);
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #767676; /* Color of the scrollbar thumb on hover */
+    background-color: var(--ink-soft);
   }
-  
+
   /* For Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #5a5a5a #2c2c2c;
+    scrollbar-color: var(--ink-mute) var(--bg-3);
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none; /* Hide scrollbar for Chrome, Safari and Opera */
