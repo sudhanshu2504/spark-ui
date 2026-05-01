@@ -1,15 +1,16 @@
-const layout =[
+const layout = [
     {
-        name:'Install Next JS',
-        link:'/docs/install-nextjs'
+        name: 'Install Next.js',
+        link: '/docs/install-nextjs',
     },
     {
-        name:'Install Tailwind CSS',
-        link:'/docs/install-tailwind'
+        name: 'Install Tailwind CSS',
+        link: '/docs/install-tailwind',
     },
     {
-        name:'Install Framer Motion',
-        link:'/docs/install-framermotion'
+        name: 'Install Motion',
+        link: '/docs/install-motion',
     },
 ];
+
 export default layout;

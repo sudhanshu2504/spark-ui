@@ -2,7 +2,7 @@
 
 > Transform your web projects into **Spark** — the next-generation UI library designed for seamless, dynamic, and stunning user interfaces.
 
-**Spark UI** is a modern, open-source component library that helps developers build beautiful, responsive, and accessible web applications faster. Built with React, Tailwind CSS, and Motion (Framer Motion), Spark UI provides ready-to-use, production-ready components with stunning animations and modern design patterns.
+**Spark UI** is a modern, open-source component library that helps developers build beautiful, responsive, and accessible web applications faster. Built with React, Tailwind CSS, and Motion (previously Framer Motion), Spark UI provides ready-to-use, production-ready components with stunning animations and modern design patterns.
 
 🌐 **Visit**: [sparkui.site](https://sparkui.site)
 
@@ -68,7 +68,7 @@ Make sure your project has:
 
 - **React** (v18+)
 - **Tailwind CSS** configured
-- **Motion** (Framer Motion) - `npm install motion`
+- **Motion** (previously Framer Motion) - `npm install motion`
 
 ### Quick Start
 
@@ -196,7 +196,7 @@ When submitting a new component:
 - **[Next.js 14](https://nextjs.org/)** - React framework with App Router
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-safe development
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[Motion](https://motion.dev/)** - Animation library (Framer Motion)
+- **[Motion](https://motion.dev/)** - Animation library (previously Framer Motion)
 - **[GSAP](https://greensock.com/gsap/)** - Professional-grade animation platform
 - **[Radix UI](https://www.radix-ui.com/)** - Accessible component primitives
 - **[Lucide React](https://lucide.dev/)** - Beautiful icon toolkit

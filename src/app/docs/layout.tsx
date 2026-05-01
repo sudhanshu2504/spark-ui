@@ -1,51 +1,66 @@
-'use client'
-import React from 'react';
-import Link from 'next/link';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import layout from '@/content/layout';
-import components from '@/content/components';
+import { getComponents } from '@/lib/fetchCMSData';
+import { Component } from '@/types/components';
+import constants from '@/utils/constants';
+import SidebarLink from '@/components/docs/SidebarLink';
 
-interface LayoutProps {
-  children: ReactNode;
-}
+export default async function DocsLayout({ children }: Readonly<{ children: ReactNode }>) {
+  const components: Component[] = await getComponents(constants.CMS.COMPONENTS_FIELDS);
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <>
-      <div className="flex flex-row">
-        <main className='w-1/5 py-10 h-full fixed top-14 drop-shadow-xl md:flex flex-col justify-start items-center hidden'>
-        <div className='flex flex-col gap-4'>
-            <div className='flex flex-col gap-2'>
-                <h1 className='text-white font-semibold'>Follow for updates</h1>
-                <a href='https://x.com/Knight_s18' target='_blank' className='text-gray-400 text-sm'>X @Knight_s18</a>
-            </div>
-            <div className='flex flex-col gap-2'>
-                <h1 className='text-white font-semibold'>Documentation</h1>
-                {layout.map((item, index) => {
-                    return (
-                        <Link href={`${item.link}`} key={index} className={`text-gray-400 text-sm cursor-pointer hover:text-yellow-400 duration-150`}>{item.name}</Link>
-                    )
-                })}
-            </div>
-            <div className='flex flex-col items-start'>
-                <h1 className='text-white font-semibold'>All Components</h1>
-                {components.map((component, index) => {
-                        return (
-                            <div key={index} className='py-1'>
-                                <a href={`/components/${component.link}`} className='text-gray-400 text-sm hover:text-yellow-400 duration-150'>{component.name}</a>
-                            </div>
-                        )
-                    })
-                }
-            </div>
+    <div className="flex flex-row min-h-screen">
+      {/* Sidebar */}
+      <aside className="w-[240px] shrink-0 py-8 px-6 h-[calc(100vh-64px)] sticky top-16 overflow-y-auto hidden md:flex flex-col gap-8 border-r border-rule bg-surface scrollbar-thin">
+        {/* Follow */}
+        <div className="flex flex-col gap-2">
+          <h3 className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-mute">Follow for updates</h3>
+          <a
+            href="https://x.com/Knight_s18"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-ink-soft text-sm hover:text-accent transition-colors duration-150"
+          >
+            X @Knight_s18
+          </a>
         </div>
-        </main>
-        <main className="flex w-full md:w-4/5 ml-auto px-4 py-8">
-          {children}
-        </main>
-      </div>
-    </>
-  );
-};
 
-export default Layout;
+        {/* Documentation */}
+        <div className="flex flex-col gap-2">
+          <h3 className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-mute">Documentation</h3>
+          <nav className="flex flex-col gap-1">
+            {layout.map((item, index) => (
+              <SidebarLink href={item.link} key={index}>
+                {item.name}
+              </SidebarLink>
+            ))}
+          </nav>
+        </div>
+
+        {/* All components */}
+        <div className="flex flex-col gap-2">
+          <h3 className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-mute">All Components</h3>
+          <nav className="flex flex-col gap-0.5">
+            {components.map((component, index) => (
+              <div key={index} className="flex items-center gap-1.5">
+                <SidebarLink href={`/components/${component.slug}`}>
+                  {component.name}
+                </SidebarLink>
+                {component?.isNewComponent && (
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-400 border border-emerald-400/30 bg-emerald-400/10 rounded px-1 py-px">
+                    new
+                  </span>
+                )}
+              </div>
+            ))}
+          </nav>
+        </div>
+      </aside>
+
+      {/* Main content */}
+      <main className="flex-1 min-w-0 px-4 md:px-10 py-6 md:py-8">
+        {children}
+      </main>
+    </div>
+  );
+}

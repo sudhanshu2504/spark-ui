@@ -218,7 +218,7 @@ const BottomCTA = () => (
             <span className="font-display italic font-normal text-accent">beautiful</span>?
           </h2>
           <p className="text-ink-soft text-base mb-8 max-w-md mx-auto">
-            Every component is free, copy-pasteable, and built with React + Tailwind + Framer Motion.
+            Every component is free, copy-pasteable, and built with React + Tailwind + Motion.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
