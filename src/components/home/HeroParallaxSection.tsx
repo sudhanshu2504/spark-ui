@@ -18,8 +18,9 @@ export default function HeroParallaxSection({
   data: any;
   ContentComponent: React.ReactNode;
 }) {
-  const firstRow = components.slice(0, 3);
-  const secondRow = components.slice(3, 6);
+  const half = Math.ceil(components.length / 2);
+  const firstRow = components.slice(0, half);
+  const secondRow = components.slice(half);
   const ref = React.useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 

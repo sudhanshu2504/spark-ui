@@ -7,6 +7,7 @@ import CurvedNavbar from "./demo/curved-navbar";
 import ImageSliders from "./demo/ImageSliders";
 import MagneticEffects from "./demo/MagneticEffects";
 import MouseFollower from "./demo/MouseFollower";
+import SmoothCounter from "./demo/SmoothCounter";
 import TextGradientOnhover from "./demo/TextGradientOnhover";
 import DefaultComponent from "./demo/DefaultComponent";
 
@@ -20,6 +21,7 @@ const componentMapper = {
   "image-slider": ImageSliders,
   "magnetic-effect": MagneticEffects,
   "mouse-follower": MouseFollower,
+  "smooth-counter": SmoothCounter,
   "text-gradient-onhover": TextGradientOnhover,
 };
 

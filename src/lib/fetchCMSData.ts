@@ -16,7 +16,7 @@ export const getComponents = cache(async (
         body: JSON.stringify({
           query: `
             {
-              Components(where: { isActive: { equals: true } }) {
+              Components(where: { isActive: { equals: true } }, sort: "name:asc", limit: 50) {
                 docs {
                   ${queryFields}
                 }

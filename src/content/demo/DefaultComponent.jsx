@@ -234,7 +234,7 @@ export default function DefaultComponent() {
             <span className="text-yellow-400 text-xs sm:text-sm font-semibold">Working on it...</span>
           </motion.div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-3 sm:mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-3 sm:mb-4 text-gray-400">
             Oops!
           </h1>
           
