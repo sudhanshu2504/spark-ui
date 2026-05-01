@@ -2,14 +2,20 @@ import React from "react";
 import { HoverBorderGradient } from "@/components/ui/gradient-border";
 import Logo from "@/components/logo";
 import Link from "next/link";
-import components from '@/content/components'
-import { getHomePageData } from '@/lib/fetchCMSData';
+import { getHomePageData, getComponents } from '@/lib/fetchCMSData';
 import HeroParallaxSection from "@/components/home/HeroParallaxSection";
-import Marquee from "@/components/ui/marquee";
 import { TbComponents } from "react-icons/tb";
 import { AnimatedSection, StaggerGrid, StaggerItem, GlowOrb } from "@/components/home/AnimatedSection";
+import constants from "@/utils/constants";
 
-const Content = ({ data }: { data: any }) => {
+interface HomeComponent {
+  name: string;
+  link: string;
+  img: string;
+  latest?: boolean;
+}
+
+const Content = ({ data, count }: { data: any; count: number }) => {
   const heroBlock = data?.content?.hero || {};
   const heroMetadata = heroBlock.metadata || {};
   const buttons = heroMetadata.buttons?.length
@@ -42,7 +48,7 @@ const Content = ({ data }: { data: any }) => {
 
       {/* Sub-headline */}
       <p className="text-ink-soft text-center text-base md:text-lg max-w-xl px-4">
-        {components.length} hand-crafted components. Free forever. New ones drop weekly.
+        {count} hand-crafted components. Free forever. New ones drop weekly.
       </p>
 
       {/* CTAs */}
@@ -74,28 +80,6 @@ const Content = ({ data }: { data: any }) => {
       </div>
     </main>
   )
-}
-
-const OurComponents = () => {
-  return (
-    <div className="flex flex-col gap-4">
-      <h1 className={`md:text-5xl text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-ink to-ink-mute text-center mb-6`}>Our Components</h1>
-      <div className="flex flex-row flex-wrap gap-4">
-        <Marquee className="[--duration:35s] antialiased h-[500px]">
-          {components.map((component) => (
-            <div key={component.name} className="flex flex-col gap-2 h-1/2 w-1/2 border border-rule rounded-md ">
-              <img
-                src={`/assests/components_preview/${component.img}`}
-                alt={component.name}
-                className="h-full w-full object-cover object-center"
-              />
-              <h3 className="text-ink">{component.name}</h3>
-            </div>
-          ))}
-        </Marquee>
-      </div>
-    </div>
-  );
 }
 
 const Features = ({ data }: { data: any }) => {
@@ -168,7 +152,7 @@ const HowItWorks = () => (
 );
 
 /* ── Component Showcase Grid ─────────────────────────── */
-const ComponentGrid = () => (
+const ComponentGrid = ({ components }: { components: HomeComponent[] }) => (
   <section className="py-20 md:py-28 relative overflow-hidden">
     <GlowOrb className="w-[600px] h-[600px] -right-64 top-0 bg-accent/8 blur-[140px]" />
     <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -191,14 +175,14 @@ const ComponentGrid = () => (
             >
               <div className="h-[180px] overflow-hidden border-b border-rule bg-surface-3 flex items-center justify-center">
                 <img
-                  src={`/assests/components_preview/${c.img}`}
+                  src={c.img}
                   alt={c.name}
                   className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-300"
                 />
               </div>
               <div className="flex items-center justify-between px-4 py-3">
                 <span className="font-sans font-medium text-sm text-ink">{c.name}</span>
-                {(c as any).latest && (
+                {c.latest && (
                   <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-400 border border-emerald-400/30 bg-emerald-400/10 rounded px-1.5 py-0.5">new</span>
                 )}
               </div>
@@ -256,14 +240,25 @@ const BottomCTA = () => (
   </section>
 );
 export default async function Home() {
-  const data = await getHomePageData() || {};
+  const [data, cmsComponents] = await Promise.all([
+    getHomePageData(),
+    getComponents(constants.CMS.COMPONENTS_FIELDS),
+  ]);
+
+  // Normalize CMS shape (slug, thumbnailURL, isNewComponent) to homepage shape (link, img, latest)
+  const components: HomeComponent[] = (cmsComponents || []).map((c: any) => ({
+    name: c.name,
+    link: c.slug,
+    img: c.thumbnailURL,
+    latest: c.isNewComponent,
+  }));
 
   return (
     <>
-      <HeroParallaxSection components={components} data={data} ContentComponent={<Content data={data} />} />
+      <HeroParallaxSection components={components} data={data || {}} ContentComponent={<Content data={data || {}} count={components.length} />} />
       <HowItWorks />
-      <Features data={data} />
-      <ComponentGrid />
+      <Features data={data || {}} />
+      <ComponentGrid components={components} />
       <BottomCTA />
     </>
   );

@@ -3,9 +3,10 @@ import Link from 'next/link';
 import layout from '@/content/layout';
 import { getComponents } from '@/lib/fetchCMSData';
 import { Component } from '@/types/components';
+import constants from '@/utils/constants';
 
 export default async function Layout({ children }: Readonly<{ children: ReactNode }>) {
-  const components: Component[] = await getComponents('name,slug,isActive,isNewComponent');
+  const components: Component[] = await getComponents(constants.CMS.COMPONENTS_FIELDS);
 
   return (
     <div className="flex flex-row min-h-screen">

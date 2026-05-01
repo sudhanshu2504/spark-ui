@@ -6,6 +6,7 @@ import Navigation from "../components/navbar";
 import Footer from "../components/footer";
 import { Analytics } from "@vercel/analytics/react";
 import { getComponents } from "@/lib/fetchCMSData";
+import constants from "@/utils/constants";
 
 const interTight = Inter_Tight({
   subsets: ["latin"],
@@ -67,7 +68,7 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
-  const cmsComponents = await getComponents('name,slug,thumbnailURL,description');
+  const cmsComponents = await getComponents(constants.CMS.COMPONENTS_FIELDS);
 
   return (
     <html lang="en" className={`bg-surface ${interTight.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}>

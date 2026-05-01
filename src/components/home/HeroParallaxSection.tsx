@@ -66,7 +66,7 @@ export default function HeroParallaxSection({
               <Link href={`/components/${component.link}`} key={component.name}>
                 <div className="flex flex-col max-w-[380px] gap-2 h-1/2 border border-rule rounded-md ">
                   <img
-                    src={`/assests/components_preview/${component.img}`}
+                    src={component.img}
                     alt={component.name}
                     className="h-full w-full object-contain object-center"
                   />
@@ -87,7 +87,7 @@ export default function HeroParallaxSection({
               <Link href={`/components/${component.link}`} key={component.name}>
                 <div className="flex flex-col max-w-[380px] gap-2 h-1/2 border border-rule rounded-md ">
                   <img
-                    src={`/assests/components_preview/${component.img}`}
+                    src={component.img}
                     alt={component.name}
                     className="h-full w-full object-contain object-center"
                   />

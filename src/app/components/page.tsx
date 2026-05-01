@@ -2,6 +2,7 @@ import React from 'react';
 import { getComponents } from '@/lib/fetchCMSData';
 import { Component } from '@/types/components';
 import Card from '@/components/ui/components_card';
+import constants from '@/utils/constants';
 
 interface CMSComponent extends Component {
   thumbnailURL?: string;
@@ -9,7 +10,7 @@ interface CMSComponent extends Component {
 }
 
 async function ComponentsPage() {
-  const components: CMSComponent[] = await getComponents('name,slug,thumbnailURL,description,isNewComponent');
+  const components: CMSComponent[] = await getComponents(constants.CMS.COMPONENTS_FIELDS);
 
   if (!components || components.length === 0) {
     return (
