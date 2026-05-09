@@ -5,6 +5,7 @@ import CardRevealEffect from "./demo/card-reveal-effect";
 import CardsStack from "./demo/cards-stack";
 import CurvedNavbar from "./demo/curved-navbar";
 import ImageSliders from "./demo/ImageSliders";
+import LiquidGlass from "./demo/LiquidGlass";
 import MagneticEffects from "./demo/MagneticEffects";
 import MouseFollower from "./demo/MouseFollower";
 import SmoothCounter from "./demo/SmoothCounter";
@@ -19,6 +20,7 @@ const componentMapper = {
   "cards-stack": CardsStack,
   "curved-navbar": CurvedNavbar,
   "image-slider": ImageSliders,
+  "liquid-glass": LiquidGlass,
   "magnetic-effect": MagneticEffects,
   "mouse-follower": MouseFollower,
   "smooth-counter": SmoothCounter,
