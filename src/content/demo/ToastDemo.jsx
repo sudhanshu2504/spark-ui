@@ -79,7 +79,7 @@ const actions = [
     handler: () => {
       const fakeApi = new Promise((res, rej) =>
         setTimeout(
-          () => (Math.random() > 0.3 ? res({ url: 'spark-ui.vercel.app' }) : rej()),
+          () => (Math.random() > 0.3 ? res({ url: 'sparkui.site' }) : rej()),
           2500
         )
       );
