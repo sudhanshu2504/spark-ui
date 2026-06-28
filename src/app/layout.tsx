@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter_Tight, Instrument_Serif, JetBrains_Mono } from "next/font/google";
-import {HeroUIProvider} from "@heroui/react";
+import { Providers } from "./providers";
 import Navigation from "../components/navbar";
 import Footer from "../components/footer";
 import { Analytics } from "@vercel/analytics/react";
@@ -74,13 +74,13 @@ export default async function RootLayout({children,}: Readonly<{children: React.
     <html lang="en" className={`bg-surface ${interTight.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}>
       <body>
         <Analytics/>
-        <HeroUIProvider>
+        <Providers>
           <Navigation components={cmsComponents} />
           <div className="min-h-screen">
             {children}
           </div>
           <Footer/>
-        </HeroUIProvider>
+        </Providers>
       </body>
     </html>
   );
