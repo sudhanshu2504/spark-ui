@@ -26,13 +26,13 @@ export async function POST(request: NextRequest) {
 
     // Revalidate by tag
     if (tag) {
-      revalidateTag(tag);
+      revalidateTag(tag, "max");
       console.log(`Revalidated tag: ${tag}`);
     }
 
     // Revalidate specific component by slug
     if (slug) {
-      revalidateTag(`component-${slug}`);
+      revalidateTag(`component-${slug}`, "max");
       revalidatePath(`/components/${slug}`);
       console.log(`Revalidated component: ${slug}`);
     }
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
 
     // If no specific revalidation, revalidate all components
     if (!tag && !path && !slug) {
-      revalidateTag("components");
+      revalidateTag("components", "max");
       revalidatePath("/components");
       console.log("Revalidated all components");
     }

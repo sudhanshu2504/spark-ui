@@ -5,7 +5,7 @@ import { revalidateTag, revalidatePath } from "next/cache";
  * Call this when components are updated in the CMS
  */
 export function revalidateComponents() {
-  revalidateTag("components");
+  revalidateTag("components", "max");
   revalidatePath("/components");
 }
 
@@ -14,7 +14,7 @@ export function revalidateComponents() {
  * Call this when a specific component is updated in the CMS
  */
 export function revalidateComponent(slug: string) {
-  revalidateTag(`component-${slug}`);
+  revalidateTag(`component-${slug}`, "max");
   revalidatePath(`/components/${slug}`);
 }
 
@@ -23,6 +23,6 @@ export function revalidateComponent(slug: string) {
  * Use sparingly - only when major CMS updates occur
  */
 export function revalidateAll() {
-  revalidateTag("components");
+  revalidateTag("components", "max");
   revalidatePath("/components", "layout");
 }
