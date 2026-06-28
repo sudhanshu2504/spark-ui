@@ -7,17 +7,17 @@ import type { Metadata } from "next";
 // Generate static params for all components at build time
 export async function generateStaticParams() {
   const components = await getComponents("slug");
-  
+
   return components.map((component: any) => ({
     slug: component.slug,
   }));
 }
 
 // Generate metadata for SEO
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { slug } = params;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   const data = await getComponentsBySlug(slug);
-  
+
   if (!data?.slug) {
     return {
       title: "Component Not Found",
@@ -30,10 +30,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const data = await getComponentsBySlug(slug);
-  
+
   if (!data?.slug) {
     redirect('/not-found');
   }
