@@ -1,6 +1,7 @@
 import Carousel from "./demo/AnimatedCarousel";
 import ApplePreloader from "./demo/ApplePreloader";
 import BackgroundImageParallex from "./demo/BackgroundImageParallex";
+import BentoGrid from "./demo/BentoGrid";
 import CardRevealEffect from "./demo/card-reveal-effect";
 import CardsStack from "./demo/cards-stack";
 import CurvedNavbar from "./demo/curved-navbar";
@@ -17,6 +18,7 @@ const componentMapper = {
   "animated-carousel": Carousel,
   "apple-preloader": ApplePreloader,
   "background-image-parallex": BackgroundImageParallex,
+  "interactive-bento-grid": BentoGrid,
   "card-reveal-effect": CardRevealEffect,
   "cards-stack": CardsStack,
   "curved-navbar": CurvedNavbar,
