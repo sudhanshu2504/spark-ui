@@ -14,6 +14,7 @@ import TextGradientOnhover from "./demo/TextGradientOnhover";
 import DefaultComponent from "./demo/DefaultComponent";
 import ToastDemo from "./demo/ToastDemo";
 import StickyScrollDemo from "./demo/StickyScroll";
+import HolographicCardDemo from "./demo/HolographicCard";
 
 const componentMapper = {
   "animated-carousel": Carousel,
@@ -31,6 +32,7 @@ const componentMapper = {
   "text-gradient-onhover": TextGradientOnhover,
   "stackable-toast": ToastDemo,
   "sticky-scroll": StickyScrollDemo,
+  "holographic-card": HolographicCardDemo,
 };
 
 export default componentMapper;
