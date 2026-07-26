@@ -13,6 +13,7 @@ import SmoothCounter from "./demo/SmoothCounter";
 import TextGradientOnhover from "./demo/TextGradientOnhover";
 import DefaultComponent from "./demo/DefaultComponent";
 import ToastDemo from "./demo/ToastDemo";
+import StickyScrollDemo from "./demo/StickyScroll";
 
 const componentMapper = {
   "animated-carousel": Carousel,
@@ -29,6 +30,7 @@ const componentMapper = {
   "smooth-counter": SmoothCounter,
   "text-gradient-onhover": TextGradientOnhover,
   "stackable-toast": ToastDemo,
+  "sticky-scroll": StickyScrollDemo,
 };
 
 export default componentMapper;
